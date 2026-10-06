@@ -30,6 +30,8 @@
   function makeRenderer(canvas, show, opts) {
     opts = opts || {};
     const ctx = canvas.getContext('2d');
+    const lit = document.createElement('canvas');
+    const lc = lit.getContext('2d');
     let bg = null;
     if (opts.background) { bg = new Image(); bg.src = opts.background; }
     const { nodes, lines, w, h, manifest, data } = show;
@@ -40,7 +42,7 @@
       let gd = gradCache.get(key);
       if (!gd) {
         const R = 10;
-        gd = ctx.createRadialGradient(0, 0, 0, 0, 0, R);
+        gd = lc.createRadialGradient(0, 0, 0, 0, 0, R);
         gd.addColorStop(0, `rgba(${r},${g},${b},0.6)`);
         gd.addColorStop(0.35, `rgba(${r},${g},${b},0.18)`);
         gd.addColorStop(1, `rgba(${r},${g},${b},0)`);
@@ -70,6 +72,7 @@
       dpr = Math.min(window.devicePixelRatio || 1, 2);
       const cw = canvas.clientWidth, ch = canvas.clientHeight;
       canvas.width = Math.round(cw * dpr); canvas.height = Math.round(ch * dpr);
+      lit.width = canvas.width; lit.height = canvas.height;
       const s = Math.min(cw / w, ch / h);
       scale = s * dpr;
       ox = (cw - w * s) / 2 * dpr; oy = (ch - h * s) / 2 * dpr;
@@ -85,7 +88,10 @@
       ctx.fillRect(0, 0, canvas.width, canvas.height);
       if (bg && bg.complete && bg.naturalWidth) { ctx.globalAlpha = 0.5; ctx.drawImage(bg, ox, oy, w * scale, h * scale); ctx.globalAlpha = 1; }
       if (!bg && sil.width) { ctx.globalAlpha = 0.3; ctx.drawImage(sil, 0, 0); ctx.globalAlpha = 1; }
-      ctx.globalCompositeOperation = 'lighter';
+      // draw the lights onto an offscreen layer, then composite with a soft blur
+      lc.setTransform(1, 0, 0, 1, 0, 0);
+      lc.clearRect(0, 0, lit.width, lit.height);
+      lc.globalCompositeOperation = 'lighter';
       const base = fi * N * 3;
       const R = 10;
       for (let i = 0; i < N; i++) {
@@ -93,20 +99,23 @@
         const r = data[c], g = data[c + 1], b = data[c + 2];
         if (r + g + b < 24) continue;
         const x = ox + nodes[i][0] * scale, y = oy + nodes[i][1] * scale;
-        ctx.setTransform(scale / 1, 0, 0, scale / 1, x, y);
-        ctx.fillStyle = grad(r, g, b);
-        ctx.fillRect(-R, -R, 2 * R, 2 * R);
+        lc.setTransform(scale, 0, 0, scale, x, y);
+        lc.fillStyle = grad(r, g, b);
+        lc.fillRect(-R, -R, 2 * R, 2 * R);
       }
-      // bright cores
-      ctx.setTransform(1, 0, 0, 1, 0, 0);
+      lc.setTransform(1, 0, 0, 1, 0, 0);
       for (let i = 0; i < N; i++) {
         const c = base + i * 3;
         const r = data[c], g = data[c + 1], b = data[c + 2];
         if (r + g + b < 24) continue;
         const x = ox + nodes[i][0] * scale, y = oy + nodes[i][1] * scale;
-        ctx.fillStyle = `rgb(${r},${g},${b})`;
-        ctx.beginPath(); ctx.arc(x, y, 1.7 * dpr, 0, 6.2832); ctx.fill();
+        lc.fillStyle = `rgb(${r},${g},${b})`;
+        lc.beginPath(); lc.arc(x, y, 1.7 * dpr, 0, 6.2832); lc.fill();
       }
+      ctx.globalCompositeOperation = 'lighter';
+      ctx.filter = 'blur(' + (1.6 * dpr) + 'px)';
+      ctx.drawImage(lit, 0, 0);
+      ctx.filter = 'none';
       ctx.globalCompositeOperation = 'source-over';
     }
 
