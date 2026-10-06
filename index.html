@@ -5,30 +5,23 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Fine Tuned Lights</title>
 <meta name="description" content="A light show synchronized to music on your phone. Every night, sunset to midnight.">
-<meta name="theme-color" content="#121216">
+<meta name="theme-color" content="#0b0d14">
 <meta property="og:title" content="Fine Tuned Lights">
 <meta property="og:description" content="Press play, turn it up, and watch the house. Every night, sunset to midnight.">
 <meta property="og:image" content="https://finetunedlights.com/display-photo.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap">
-<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="style.css?v=11">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
-<script src="show.js" defer></script>
-<script src="holiday.js" defer></script>
+<script src="show.js?v=11" defer></script>
+<script src="holiday.js?v=11" defer></script>
+<script src="roof-player.js?v=11" defer></script>
 </head>
 <body class="app dock">
-<header class="top">
-  <a class="brand" href="/">
-    <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M3 20 L16 6 L29 20" fill="none" stroke="#c7b7ff" stroke-width="2.5" stroke-linejoin="round"/>
-      <g fill="#dcd2ff"><circle cx="6" cy="17.5" r="1.6"/><circle cx="10" cy="13.2" r="1.6"/><circle cx="14" cy="8.9" r="1.6"/><circle cx="18" cy="8.9" r="1.6"/><circle cx="22" cy="13.2" r="1.6"/><circle cx="26" cy="17.5" r="1.6"/></g></svg>
-    <b>Fine Tuned Lights</b>
-  </a>
-  <div class="status" id="status">Daily, sunset to midnight</div>
-</header>
-<div class="bulbs" id="bulbs" aria-hidden="true"></div>
+<div class="masthead"><img src="banner.webp?v=11" alt="Fine Tuned Lights"></div>
+<div class="statusbar" id="status">Daily, sunset to midnight</div>
 
 <main class="home">
-  <img class="house" src="display-photo.jpg" alt="The house with its roofline lit">
   <h1><span class="r">The lights</span> <span class="g">dance.</span><br>Your phone plays the music.</h1>
   <p class="line">Every night, <b>sunset to midnight</b> · <a href="https://maps.apple.com/?q=8209+NW+125th+St,+Oklahoma+City,+OK+73142">8209 NW 125th St</a></p>
   <div class="btns">
@@ -36,9 +29,9 @@
     <a class="btn big alt" href="about.html">About the show</a>
   </div>
   <p class="rules">Headlights off, music in the car, driveways clear. Thank you.</p>
+  <div class="roofwrap"><canvas id="roof"></canvas></div>
 </main>
 
-<!-- PulseMesh's player, docked: only its control strip shows until you expand it -->
 <section class="player-dock" id="dock">
   <button class="grab" id="collapse" aria-label="Collapse player"><span></span></button>
   <iframe id="player" src="https://player.pulsemesh.io/d/MZVS" title="Listen to the show" allow="autoplay; geolocation; microphone"></iframe>
@@ -48,9 +41,23 @@
   var body = document.body, dock = document.getElementById('dock');
   document.getElementById('expand').addEventListener('click', function (e) { e.preventDefault(); body.classList.add('expanded'); });
   document.getElementById('collapse').addEventListener('click', function () { body.classList.remove('expanded'); });
-  // If the frame never loads, send people to the player directly.
   var loaded = false; document.getElementById('player').addEventListener('load', function () { loaded = true; });
   setTimeout(function () { if (!loaded) { var a = document.getElementById('expand'); a.textContent = '▶  Open the player'; a.href = 'https://psm.sh/MZVS'; a.onclick = null; dock.style.display = 'none'; } }, 10000);
+
+  // Live roofline: animate the real sequence on the house. Syncs to the player's
+  // playback position when the page provides window.__pmPositionMs; otherwise it
+  // runs as a gentle looping preview so the house is always alive.
+  // Wait for DOMContentLoaded so the deferred roof-player.js has executed.
+  window.addEventListener('DOMContentLoaded', async function () {
+    try {
+      var show = await Roofline.loadShow('like-its-christmas');
+      var r = Roofline.makeRenderer(document.getElementById('roof'), show, { background: 'house-silhouette.jpg?v=11' });
+      var t0 = performance.now();
+      r.start(function () {
+        return window.__pmPositionMs ? window.__pmPositionMs() : (performance.now() - t0) % r.durationMs;
+      });
+    } catch (e) { /* leave the static look if data fails */ }
+  });
 </script>
 </body>
 </html>

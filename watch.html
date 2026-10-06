@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Watch the show — Fine Tuned Lights</title>
+<meta name="theme-color" content="#0b0d14">
+<style>
+  html,body{margin:0;height:100%;background:#0b0d14;color:#dcd2ff;font-family:Roboto,system-ui,-apple-system,sans-serif;overflow:hidden}
+  #c{display:block;width:100vw;height:100vh}
+  .overlay{position:fixed;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;background:rgba(11,13,20,.55);backdrop-filter:blur(2px)}
+  .overlay.hidden{display:none}
+  .overlay h1{font-size:22px;margin:0;font-weight:700}
+  .play{padding:16px 30px;border:0;border-radius:999px;background:#c7b7ff;color:#1c1530;font-size:18px;font-weight:700}
+  #hud{position:fixed;left:10px;bottom:10px;font-size:12px;color:#6f6c83;background:rgba(0,0,0,.4);padding:4px 8px;border-radius:6px}
+</style></head>
+<body>
+<canvas id="c"></canvas>
+<div class="overlay" id="ov"><h1>Fine Tuned Lights</h1><button class="play" id="go">▶ Watch the show</button></div>
+<div id="hud">loading…</div>
+<audio id="song" preload="auto"></audio>
+<script src="roof-player.js?v=4"></script>
+<script>
+(async () => {
+  const hud = document.getElementById('hud'), ov = document.getElementById('ov');
+  try {
+    const show = await Roofline.loadShow('like-its-christmas');
+    const r = Roofline.makeRenderer(document.getElementById('c'), show, {background: 'house-dusk.jpg'});
+    hud.textContent = show.manifest.song;
+    r.drawFrame(1200); // a lit preview behind the overlay
+    // Clock source, in order of preference:
+    //  1) PulseMesh live position, if the page sets window.__pmPositionMs (production).
+    //  2) a local <audio> file (the operator's own copy, placed at show-data/<slug>.mp3; never shipped).
+    //  3) a self-running loop (pure preview).
+    const song = document.getElementById('song');
+    song.src = 'show-data/like-its-christmas.mp3';
+    let mode = 'loop';
+    await new Promise(res => { song.addEventListener('canplay', () => { mode = 'audio'; res(); }, {once:true}); song.addEventListener('error', res, {once:true}); setTimeout(res, 1500); });
+    document.getElementById('go').addEventListener('click', async () => {
+      ov.classList.add('hidden');
+      if (window.__pmPositionMs) { r.start(() => window.__pmPositionMs()); hud.textContent = show.manifest.song + ' · live'; return; }
+      if (mode === 'audio') { try { await song.play(); r.start(() => song.currentTime * 1000); hud.textContent = show.manifest.song + ' · with music'; return; } catch(e){} }
+      const t0 = performance.now(); r.start(() => (performance.now() - t0) % r.durationMs); hud.textContent = show.manifest.song + ' · preview';
+    });
+  } catch (e) { hud.textContent = 'ERR ' + e.message; }
+})();
+</script>
+</body></html>
