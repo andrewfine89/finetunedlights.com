@@ -1,0 +1,82 @@
+:root{
+  /* matched to the PulseMesh web player: near-black, lavender pill buttons, Roboto */
+  --bg:#121216;--panel:#1e1e26;--fg:#f2f1f6;--muted:#a6a4b3;
+  --gold:#c7b7ff;--gold-2:#dcd2ff;--line:#2b2b36;
+  --max:720px;
+}
+*{box-sizing:border-box}
+html,body{margin:0;min-height:100%;background:var(--bg);color:var(--fg);
+  font:16px/1.55 Roboto,-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;
+  -webkit-text-size-adjust:100%}
+a{color:var(--gold-2)}
+header.top{flex:none;display:flex;align-items:center;justify-content:space-between;gap:12px;
+  padding:10px 16px;border-bottom:1px solid var(--line);background:var(--bg)}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--fg)}
+.brand svg{width:28px;height:28px;flex:none}
+.brand b{font-weight:700;letter-spacing:.2px;white-space:nowrap}
+.status{font-size:14px;color:var(--muted);text-align:right}
+.status b{color:var(--gold);font-weight:600}
+.status.on b{color:#7ee0a0}
+body.app{height:100vh;height:100dvh;display:flex;flex-direction:column;overflow:hidden}
+main.player{position:relative;flex:1;min-height:0;background:#000}
+main.player iframe{width:100%;height:100%;border:0;display:block}
+.fallback{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;
+  gap:14px;padding:24px;text-align:center;background:var(--bg)}
+.fallback.hidden{display:none}
+.btn{display:inline-block;padding:14px 22px;border-radius:999px;background:var(--gold);color:#1c1530;
+  font-weight:700;text-decoration:none;font-size:17px}
+footer.bar{flex:none;height:44px;display:flex;align-items:center;justify-content:center;
+  gap:18px;border-top:1px solid var(--line);background:var(--bg);font-size:14px}
+footer.bar a{color:var(--muted);text-decoration:none}
+footer.bar a:hover{color:var(--fg)}
+/* about page */
+.wrap{max-width:var(--max);margin:0 auto;padding:24px 16px 64px}
+h1{font-size:30px;line-height:1.15;margin:8px 0 6px}
+h2{font-size:20px;margin:36px 0 8px;color:var(--gold-2)}
+p,li{color:#dcd8cc}
+.lead{font-size:18px;color:var(--fg)}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:16px 18px;margin:18px 0}
+.hours{display:flex;gap:16px;flex-wrap:wrap}
+.hours div{flex:1 1 160px}
+.hours small{display:block;color:var(--muted)}
+.hours strong{font-size:22px;color:var(--fg)}
+ul{padding-left:20px}
+.songs li{margin:4px 0}
+.fine{color:var(--muted);font-size:14px}
+.cta{margin:28px 0;text-align:center}
+@media (max-width:420px){.status{font-size:13px}.brand b{font-size:15px}}
+
+/* compact about page */
+.about{max-width:520px;margin:0 auto;padding:36px 16px 48px;text-align:center}
+.about h1{font-size:34px;margin:0 0 6px}
+.about .line{font-size:18px;color:var(--fg);margin:0 0 4px}
+.about .line b{color:var(--gold)}
+.about .addr{color:var(--muted);margin:0 0 26px}
+.about .addr a{color:var(--muted)}
+.btns{display:flex;flex-direction:column;gap:12px;margin:0 auto 26px;max-width:360px}
+.btn.big{display:block;padding:18px 20px;font-size:19px;border-radius:999px}
+.btn.alt{background:var(--panel);color:var(--fg);border:1px solid var(--line)}
+.about .rules{color:var(--muted);font-size:15px;margin:0 0 30px}
+.about .tiny{color:#6f6c63;font-size:12px}
+
+/* holiday dressing: a string of bulbs under the header, snow in December */
+.bulbs{position:relative;height:34px;overflow:hidden;pointer-events:none}
+.bulbs svg{display:block;width:100%;height:34px}
+.bulbs path{stroke:#2b2b36}
+.bulb{animation:tw 1.6s ease-in-out infinite}
+.bulb:nth-child(5n+1){animation-delay:0s}.bulb:nth-child(5n+2){animation-delay:.3s}.bulb:nth-child(5n+3){animation-delay:.6s}
+.bulb:nth-child(5n+4){animation-delay:.9s}.bulb:nth-child(5n+5){animation-delay:1.2s}
+@keyframes tw{0%,100%{opacity:1;filter:drop-shadow(0 0 4px currentColor)}50%{opacity:.35;filter:none}}
+.snow{position:fixed;inset:0;pointer-events:none;overflow:hidden;z-index:0}
+.snow i{position:absolute;top:-10px;width:5px;height:5px;border-radius:50%;background:#fff;opacity:.7;animation:fall linear infinite}
+@keyframes fall{to{transform:translateY(110vh)}}
+.about,.top{position:relative;z-index:1}
+body.xmas .about .line b{color:#7ee0a0}
+body.xmas h1 .g{color:#7ee0a0}body.xmas h1 .r{color:#ff6b61}
+body.halloween .about .line b{color:#c77dff}
+body.halloween h1 .g{color:#c77dff}body.halloween h1 .r{color:#ff7a1a}
+.about h1{font-size:34px;margin:0 0 6px}
+.about h1 .em{font-size:40px;display:block}
+@media (prefers-reduced-motion:reduce){.bulb,.snow i{animation:none}}
+body.xmas .btn.alt{background:transparent;color:var(--gold);border:1px solid var(--gold)}
+body.halloween .btn.alt{background:transparent;color:var(--gold);border:1px solid var(--gold)}

@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Fine Tuned Lights</title>
+<meta name="description" content="A Christmas light show synchronized to music on your phone. Daily from sunset to midnight.">
+<meta name="theme-color" content="#121216">
+<meta property="og:title" content="Fine Tuned Lights">
+<meta property="og:description" content="Press play, turn it up, and watch the house. Daily from sunset to midnight.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap">
+<link rel="stylesheet" href="style.css">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<script src="show.js" defer></script>
+</head>
+<body class="app">
+<header class="top">
+  <a class="brand" href="/">
+    <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M3 20 L16 6 L29 20" fill="none" stroke="#c7b7ff" stroke-width="2.5" stroke-linejoin="round"/>
+      <g fill="#dcd2ff"><circle cx="6" cy="17.5" r="1.6"/><circle cx="10" cy="13.2" r="1.6"/><circle cx="14" cy="8.9" r="1.6"/><circle cx="18" cy="8.9" r="1.6"/><circle cx="22" cy="13.2" r="1.6"/><circle cx="26" cy="17.5" r="1.6"/></g></svg>
+    <b>Fine Tuned Lights</b>
+  </a>
+  <div class="status" id="status">Daily, sunset to midnight</div>
+</header>
+
+<main class="player">
+  <iframe id="player" src="https://player.pulsemesh.io/d/MZVS" title="Listen to the show"
+          allow="autoplay; geolocation; microphone"></iframe>
+  <div class="fallback hidden" id="fallback">
+    <p>The player did not load here.</p>
+    <a class="btn" href="https://psm.sh/MZVS">Open the player</a>
+    <p class="fine">It opens in your browser. No app needed.</p>
+  </div>
+</main>
+
+<footer class="bar">
+  <a href="about.html">About the show</a>
+  <a href="https://psm.sh/MZVS">Open player full screen</a>
+</footer>
+
+<script>
+  // If the embedded player never loads (blocked frame, offline), show the button instead.
+  (function () {
+    var f = document.getElementById('player'), loaded = false;
+    f.addEventListener('load', function () { loaded = true; });
+    setTimeout(function () { if (!loaded) document.getElementById('fallback').classList.remove('hidden'); }, 8000);
+  })();
+</script>
+</body>
+</html>
