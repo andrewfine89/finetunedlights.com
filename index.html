@@ -4,17 +4,19 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Fine Tuned Lights</title>
-<meta name="description" content="A Christmas light show synchronized to music on your phone. Daily from sunset to midnight.">
+<meta name="description" content="A light show synchronized to music on your phone. Every night, sunset to midnight.">
 <meta name="theme-color" content="#121216">
 <meta property="og:title" content="Fine Tuned Lights">
-<meta property="og:description" content="Press play, turn it up, and watch the house. Daily from sunset to midnight.">
+<meta property="og:description" content="Press play, turn it up, and watch the house. Every night, sunset to midnight.">
+<meta property="og:image" content="https://finetunedlights.com/display-photo.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap">
 <link rel="stylesheet" href="style.css">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <script src="show.js" defer></script>
+<script src="holiday.js" defer></script>
 </head>
-<body class="app">
+<body class="app dock">
 <header class="top">
   <a class="brand" href="/">
     <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M3 20 L16 6 L29 20" fill="none" stroke="#c7b7ff" stroke-width="2.5" stroke-linejoin="round"/>
@@ -23,29 +25,32 @@
   </a>
   <div class="status" id="status">Daily, sunset to midnight</div>
 </header>
+<div class="bulbs" id="bulbs" aria-hidden="true"></div>
 
-<main class="player">
-  <iframe id="player" src="https://player.pulsemesh.io/d/MZVS" title="Listen to the show"
-          allow="autoplay; geolocation; microphone"></iframe>
-  <div class="fallback hidden" id="fallback">
-    <p>The player did not load here.</p>
-    <a class="btn" href="https://psm.sh/MZVS">Open the player</a>
-    <p class="fine">It opens in your browser. No app needed.</p>
+<main class="home">
+  <img class="house" src="display-photo.jpg" alt="The house with its roofline lit">
+  <h1><span class="r">The lights</span> <span class="g">dance.</span><br>Your phone plays the music.</h1>
+  <p class="line">Every night, <b>sunset to midnight</b> · <a href="https://maps.apple.com/?q=8209+NW+125th+St,+Oklahoma+City,+OK+73142">8209 NW 125th St</a></p>
+  <div class="btns">
+    <a class="btn big" href="#" id="expand">▶&nbsp; Listen &amp; vote</a>
+    <a class="btn big alt" href="about.html">About the show</a>
   </div>
+  <p class="rules">Headlights off, music in the car, driveways clear. Thank you.</p>
 </main>
 
-<footer class="bar">
-  <a href="about.html">About the show</a>
-  <a href="https://psm.sh/MZVS">Open player full screen</a>
-</footer>
+<!-- PulseMesh's player, docked: only its control strip shows until you expand it -->
+<section class="player-dock" id="dock">
+  <button class="grab" id="collapse" aria-label="Collapse player"><span></span></button>
+  <iframe id="player" src="https://player.pulsemesh.io/d/MZVS" title="Listen to the show" allow="autoplay; geolocation; microphone"></iframe>
+</section>
 
 <script>
-  // If the embedded player never loads (blocked frame, offline), show the button instead.
-  (function () {
-    var f = document.getElementById('player'), loaded = false;
-    f.addEventListener('load', function () { loaded = true; });
-    setTimeout(function () { if (!loaded) document.getElementById('fallback').classList.remove('hidden'); }, 8000);
-  })();
+  var body = document.body, dock = document.getElementById('dock');
+  document.getElementById('expand').addEventListener('click', function (e) { e.preventDefault(); body.classList.add('expanded'); });
+  document.getElementById('collapse').addEventListener('click', function () { body.classList.remove('expanded'); });
+  // If the frame never loads, send people to the player directly.
+  var loaded = false; document.getElementById('player').addEventListener('load', function () { loaded = true; });
+  setTimeout(function () { if (!loaded) { var a = document.getElementById('expand'); a.textContent = '▶  Open the player'; a.href = 'https://psm.sh/MZVS'; a.onclick = null; dock.style.display = 'none'; } }, 10000);
 </script>
 </body>
 </html>
