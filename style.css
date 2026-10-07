@@ -169,7 +169,7 @@ body.played:not(.expanded) .player-dock .reopen{display:block}
    hd the bar's (equal now, kept separate in case a cap ever returns). Glass: y .25-.72, x .157-.84; ticks from y .60 (read off a grid overlay).
    Until the image arrives the bar is plain dark with the lettering; the old CSS-drawn tuner is gone. */
 .player-dock{--h:calc(min(100vw - 24px, 536px) / 4.202);--hd:var(--h);height:var(--hd);border:0;box-shadow:0 2px 8px rgba(0,0,0,.5);background:#000}
-.player-dock .dockbar{position:absolute;inset:0;z-index:3;border:0;cursor:pointer;padding:0;background:#000 url(tuner.webp?v=49) center/cover no-repeat}
+.player-dock .dockbar{position:absolute;inset:0;z-index:3;border:0;cursor:pointer;padding:0;background:#000 url(tuner.webp?v=50) center/cover no-repeat}
 .player-dock .dockbar .dial{position:absolute;left:15.7%;right:16%;top:max(0px,calc(var(--hd) / 2 - .25 * var(--h)));bottom:max(0px,calc(var(--hd) / 2 - .22 * var(--h)));z-index:2;
   display:flex;flex-direction:row;align-items:center;justify-content:center;gap:0;padding:0 0 calc(.09 * var(--h))}
 .player-dock .dockbar .dial b,.player-dock .dockbar .dial small{flex:none;position:relative;z-index:1;font-family:'Josefin Sans',Futura,'Trebuchet MS',sans-serif;font-weight:700;
