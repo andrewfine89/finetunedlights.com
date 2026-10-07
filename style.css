@@ -133,3 +133,20 @@ body.expanded .player-dock .dockbar{display:none}
 body.played .player-dock .dockbar{display:none}
 .player-dock .reopen{display:none;position:absolute;inset:0;z-index:1;background:transparent;border:0;cursor:pointer}
 body.played:not(.expanded) .player-dock .reopen{display:block}
+
+/* ---- vintage radio theme ---- */
+.statusbar, .btn{font-family:'Cinzel', Georgia, serif}
+.btn.big{letter-spacing:.04em}
+.statusbar{letter-spacing:.06em}
+/* house panel framed in brass like the header */
+.roofwrap{border:2px solid #7c5f22;
+  box-shadow:inset 0 0 0 1px rgba(240,217,143,.25), inset 0 2px 14px rgba(0,0,0,.6), 0 2px 8px rgba(0,0,0,.5)}
+/* the music bar as a brass radio tuner */
+.player-dock{border-top:2px solid #7c5f22}
+body.played .player-dock{border-top:2px solid #7c5f22}
+.player-dock .dockbar{font-family:'Cinzel', Georgia, serif;letter-spacing:.1em;font-size:15px;
+  color:#f0d98f;background:linear-gradient(180deg,#2b2414 0%,#191308 100%);
+  border-top:1px solid #7c5f22;box-shadow:inset 0 10px 18px rgba(0,0,0,.5)}
+.player-dock .dockbar::after{content:"";position:absolute;left:14%;right:14%;bottom:16px;height:2px;border-radius:2px;
+  background:linear-gradient(90deg,transparent,#e8c874 20%,#e8c874 80%,transparent);opacity:.5}
+.player-dock .dockbar::before{content:"";position:absolute;bottom:11px;left:50%;width:2px;height:12px;background:#d9382c;border-radius:1px;box-shadow:0 0 5px #d9382c}
