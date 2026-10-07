@@ -11,22 +11,22 @@
 <meta property="og:image" content="https://finetunedlights.com/display-photo.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Roboto:wght@400;500;700&display=swap">
-<link rel="stylesheet" href="style.css?v=34">
+<link rel="stylesheet" href="style.css?v=36">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
-<script src="show.js?v=34" defer></script>
-<script src="holiday.js?v=34" defer></script>
-<script src="roof-player.js?v=34" defer></script>
+<script src="show.js?v=36" defer></script>
+<script src="holiday.js?v=36" defer></script>
+<script src="roof-player.js?v=36" defer></script>
 </head>
 <body class="app dock">
 <main class="home">
-  <div class="masthead"><img src="banner.webp?v=34" alt="Fine Tuned Lights"></div>
-  <div class="statusbar" id="status">Daily, sunset to midnight</div>
+  <div class="masthead"><img src="banner.webp?v=36" alt="Fine Tuned Lights"></div>
+  <div class="statusbar" id="status">Sunset to 10 pm, midnight on weekends</div>
   <div class="btns">
     <a class="btn big" href="#" id="expand">Vote for the next song</a>
     <a class="btn big alt" href="about.html">About the show</a>
   </div>
   <div class="roofwrap"><canvas id="roof"></canvas></div>
-  <p class="line">Every night, <b>sunset to midnight</b> · <a href="https://maps.apple.com/?q=8209+NW+125th+St,+Oklahoma+City,+OK+73142">8209 NW 125th St</a></p>
+  <p class="line"><b>Nov 27 to Jan 1</b> · sunset to 10 pm, midnight on weekends and holidays · <a href="https://maps.apple.com/?q=8209+NW+125th+St,+Oklahoma+City,+OK+73142">8209 NW 125th St</a></p>
   <p class="rules">Thanks for visiting our holiday light show! Please enjoy! Kindly turn on parking lights, turn off headlights, and avoid blocking traffic or driveways.</p>
 </main>
 
@@ -55,7 +55,7 @@
   window.addEventListener('DOMContentLoaded', async function () {
     try {
       var show = await Roofline.loadShow('like-its-christmas');
-      var r = Roofline.makeRenderer(document.getElementById('roof'), show, { background: 'house-night.jpg?v=34' });
+      var r = Roofline.makeRenderer(document.getElementById('roof'), show, { background: 'house-night.jpg?v=36' });
       var t0 = performance.now();
       r.start(function () {
         return window.__pmPositionMs ? window.__pmPositionMs() : (performance.now() - t0) % r.durationMs;
