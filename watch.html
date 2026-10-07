@@ -23,7 +23,7 @@
   const hud = document.getElementById('hud'), ov = document.getElementById('ov');
   try {
     const show = await Roofline.loadShow('like-its-christmas');
-    const r = Roofline.makeRenderer(document.getElementById('c'), show, {background: 'house-silhouette.jpg'});
+    const r = Roofline.makeRenderer(document.getElementById('c'), show, {background: 'house-night.jpg?v=27'});
     hud.textContent = show.manifest.song;
     r.drawFrame(1200); // a lit preview behind the overlay
     // Clock source, in order of preference:
