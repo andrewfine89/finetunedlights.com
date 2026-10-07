@@ -25,10 +25,10 @@ main.player iframe{width:100%;height:100%;border:0;display:block}
 .fallback.hidden{display:none}
 .btn{display:inline-block;padding:14px 22px;border-radius:999px;color:#2a1c05;
   font-weight:700;text-decoration:none;font-size:17px;
-  background:linear-gradient(180deg,#f6e4a6 0%,#dcb85f 34%,#b98e33 50%,#caa04a 66%,#f0d98f 100%);
-  border:1px solid #7c5f22;
-  box-shadow:inset 0 1px 0 rgba(255,250,220,.6), inset 0 -2px 5px rgba(90,60,10,.45), 0 2px 7px rgba(0,0,0,.45);
-  text-shadow:0 1px 0 rgba(255,246,205,.5)}
+  background:linear-gradient(180deg,#cbab5c 0%,#a37d2a 36%,#7a5a1d 52%,#926d26 68%,#b8923e 100%);
+  border:1px solid #533d14;
+  box-shadow:inset 0 1px 0 rgba(240,222,165,.4), inset 0 -2px 5px rgba(55,36,6,.55), 0 2px 7px rgba(0,0,0,.5);
+  text-shadow:0 1px 0 rgba(225,205,150,.35);color:#201603}
 footer.bar{flex:none;height:44px;display:flex;align-items:center;justify-content:center;
   gap:18px;border-top:1px solid var(--line);background:var(--bg);font-size:14px}
 footer.bar a{color:var(--muted);text-decoration:none}
@@ -57,7 +57,7 @@ ul{padding-left:20px}
 .about .line b{color:var(--gold)}
 .about .addr{color:var(--muted);margin:0 0 26px}
 .about .addr a{color:var(--muted)}
-.btns{display:flex;flex-direction:column;gap:9px;margin:0 auto 14px;max-width:340px}
+.btns{display:flex;flex-direction:column;gap:9px;margin:0 -16px 14px;max-width:none}
 .btn.big{display:block;padding:13px 18px;font-size:16px;border-radius:999px}
 
 .about .rules{color:var(--muted);font-size:15px;margin:0 0 30px}
@@ -117,6 +117,14 @@ body.expanded main.home{display:none}
 /* logo palette: gold + green headline, gold accents */
 h1 .r{color:#d8382c}
 h1 .g{color:#6ec07f}
-.btn.alt{color:#f0d98f;border:1px solid #cda24e;text-shadow:none;
-  background:linear-gradient(180deg,rgba(205,162,78,.20),rgba(120,92,34,.12));
-  box-shadow:inset 0 1px 0 rgba(255,238,180,.28), 0 2px 5px rgba(0,0,0,.35)}
+.btn.alt{color:#d2b566;border:1px solid #946f26;text-shadow:none;
+  background:linear-gradient(180deg,rgba(140,105,40,.24),rgba(70,52,18,.16));
+  box-shadow:inset 0 1px 0 rgba(200,170,105,.18), 0 2px 5px rgba(0,0,0,.4)}
+
+/* the collapsed player strip shows a clear 'tap to listen' bar, not raw iframe */
+.player-dock .dockbar{position:absolute;inset:0;z-index:3;border:0;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;gap:6px;
+  font-family:inherit;font-weight:700;font-size:16px;color:#ecd38f;
+  background:#15151b;border-top:1px solid var(--line)}
+.player-dock .dockbar:active{background:#1b1b22}
+body.expanded .player-dock .dockbar{display:none}

@@ -11,15 +11,15 @@
 <meta property="og:image" content="https://finetunedlights.com/display-photo.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap">
-<link rel="stylesheet" href="style.css?v=19">
+<link rel="stylesheet" href="style.css?v=20">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
-<script src="show.js?v=19" defer></script>
-<script src="holiday.js?v=19" defer></script>
-<script src="roof-player.js?v=19" defer></script>
+<script src="show.js?v=20" defer></script>
+<script src="holiday.js?v=20" defer></script>
+<script src="roof-player.js?v=20" defer></script>
 </head>
 <body class="app dock">
 <main class="home">
-  <div class="masthead"><img src="banner.webp?v=19" alt="Fine Tuned Lights"></div>
+  <div class="masthead"><img src="banner.webp?v=20" alt="Fine Tuned Lights"></div>
   <div class="statusbar" id="status">Daily, sunset to midnight</div>
   <h1><span class="r">The lights</span> <span class="g">dance.</span><br>Your phone plays the music.</h1>
   <p class="line">Every night, <b>sunset to midnight</b> · <a href="https://maps.apple.com/?q=8209+NW+125th+St,+Oklahoma+City,+OK+73142">8209 NW 125th St</a></p>
@@ -33,12 +33,14 @@
 
 <section class="player-dock" id="dock">
   <button class="grab" id="collapse" aria-label="Collapse player"><span></span></button>
+  <button class="dockbar" id="dockopen">&#9654;&nbsp; Tap to listen to the music</button>
   <iframe id="player" src="https://player.pulsemesh.io/d/MZVS" title="Listen to the show" allow="autoplay; geolocation; microphone"></iframe>
 </section>
 
 <script>
   var body = document.body, dock = document.getElementById('dock');
   document.getElementById('expand').addEventListener('click', function (e) { e.preventDefault(); body.classList.add('expanded'); });
+  document.getElementById('dockopen').addEventListener('click', function () { body.classList.add('expanded'); });
   document.getElementById('collapse').addEventListener('click', function () { body.classList.remove('expanded'); });
   var loaded = false; document.getElementById('player').addEventListener('load', function () { loaded = true; });
   setTimeout(function () { if (!loaded) { var a = document.getElementById('expand'); a.textContent = 'Open the player to vote'; a.href = 'https://psm.sh/MZVS'; a.onclick = null; dock.style.display = 'none'; } }, 10000);
@@ -50,7 +52,7 @@
   window.addEventListener('DOMContentLoaded', async function () {
     try {
       var show = await Roofline.loadShow('like-its-christmas');
-      var r = Roofline.makeRenderer(document.getElementById('roof'), show, { background: 'house-silhouette.jpg?v=19' });
+      var r = Roofline.makeRenderer(document.getElementById('roof'), show, { background: 'house-silhouette.jpg?v=20' });
       var t0 = performance.now();
       r.start(function () {
         return window.__pmPositionMs ? window.__pmPositionMs() : (performance.now() - t0) % r.durationMs;
