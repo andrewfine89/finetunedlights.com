@@ -88,6 +88,11 @@ function showStatus(now = new Date()) {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
+  const seasonEl = document.getElementById('season');
+  if (seasonEl) {
+    const y = partsIn(new Date(), TZ).y;
+    seasonEl.textContent = 'Nov ' + (thanksgivingDay(y) + 1) + ' to Jan 1';
+  }
   const el = document.getElementById('status');
   if (!el) return;
   const paint = () => { const s = showStatus(); el.innerHTML = s.text; el.classList.toggle('on', s.on); };
