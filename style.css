@@ -129,7 +129,7 @@ body.expanded main.home{display:none}
 .statusbar .lamp{flex:none;width:9px;height:9px;margin-top:0;border-radius:50%;
   background:radial-gradient(circle at 35% 35%,#ffe9a8,#e8ad3e 45%,#8a5a10);
   box-shadow:0 0 6px 1px rgba(232,173,62,.75), inset 0 0 2px rgba(0,0,0,.6);animation:flash 4s ease-in-out infinite}
-.statusbar .lamp:last-child{animation-delay:-2s}   /* the two lamps alternate, marquee style */
+/* both lamps pulse together (Andrew tried alternating and preferred them in sync) */
 .statusbar.on .lamp{background:radial-gradient(circle at 35% 35%,#d8ffe0,#6ec07f 45%,#1f6b33);box-shadow:0 0 7px 1px rgba(110,192,127,.8), inset 0 0 2px rgba(0,0,0,.6)}
 @keyframes flash{0%,100%{filter:brightness(1.1)}50%{filter:brightness(.5)}}
 .statusbar #status-text{background:linear-gradient(100deg,var(--gold) 0 40%,#fff3c4 50%,var(--gold) 60% 100%) no-repeat;background-size:300% 100%;background-position:100% 0;
