@@ -58,7 +58,7 @@ ul{padding-left:20px}
 .about .addr{color:var(--muted);margin:0 0 26px}
 .about .addr a{color:var(--muted)}
 .btns{display:flex;flex-direction:column;gap:10px;margin:0 0 10px;max-width:none}
-.btn.big{display:block;padding:15px 18px 11px;font-size:17px;font-weight:700;border-radius:12px;text-transform:uppercase;-webkit-text-stroke:.7px currentColor}
+.btn.big{display:block;padding:11.5px 16px 7px;font-size:15px;font-weight:700;border-radius:12px;text-transform:uppercase;-webkit-text-stroke:.6px currentColor}
 
 .about .rules{color:var(--muted);font-size:15px;margin:0 0 30px}
 .about .tiny{color:#6f6c63;font-size:12px}
@@ -115,7 +115,7 @@ body.expanded .player-dock .backbar{display:block}
 body.expanded main.home{display:none}
 
 /* live roofline hero on the landing page */
-.roofwrap{width:100%;margin:0;border-radius:12px;overflow:hidden;background:#07080c}
+.roofwrap{width:93%;margin:0 auto;border-radius:12px;overflow:hidden;background:#07080c}
 .roofwrap canvas{display:block;width:100%;aspect-ratio:1774/887;height:auto}
 
 /* banner masthead */
