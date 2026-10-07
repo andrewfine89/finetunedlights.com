@@ -110,10 +110,10 @@
         if (r + g + b < 24) continue;
         const x = ox + nodes[i][0] * scale, y = oy + nodes[i][1] * scale;
         lc.fillStyle = `rgb(${r},${g},${b})`;
-        lc.globalAlpha = 0.6; lc.beginPath(); lc.arc(x, y, 1.3 * dpr, 0, 6.2832); lc.fill(); lc.globalAlpha = 1;
+        lc.globalAlpha = 0.7; lc.beginPath(); lc.arc(x, y, 1.4 * dpr, 0, 6.2832); lc.fill(); lc.globalAlpha = 1;
       }
       ctx.globalCompositeOperation = 'lighter';
-      ctx.filter = 'blur(' + (2.8 * dpr) + 'px)';
+      ctx.filter = 'blur(' + (2.2 * dpr) + 'px)';
       ctx.globalAlpha = 0.75;
       ctx.drawImage(lit, 0, 0);
       ctx.globalAlpha = 1;
