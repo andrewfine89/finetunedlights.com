@@ -43,8 +43,8 @@
       if (!gd) {
         const R = 10;
         gd = lc.createRadialGradient(0, 0, 0, 0, 0, R);
-        gd.addColorStop(0, `rgba(${r},${g},${b},0.6)`);
-        gd.addColorStop(0.35, `rgba(${r},${g},${b},0.18)`);
+        gd.addColorStop(0, `rgba(${r},${g},${b},0.42)`);
+        gd.addColorStop(0.35, `rgba(${r},${g},${b},0.12)`);
         gd.addColorStop(1, `rgba(${r},${g},${b},0)`);
         gradCache.set(key, gd);
       }
@@ -86,7 +86,7 @@
       ctx.setTransform(1, 0, 0, 1, 0, 0);
       ctx.fillStyle = '#0b0d14';
       ctx.fillRect(0, 0, canvas.width, canvas.height);
-      if (bg && bg.complete && bg.naturalWidth) { ctx.globalAlpha = 0.6; ctx.drawImage(bg, ox, oy, w * scale, h * scale); ctx.globalAlpha = 1; }
+      if (bg && bg.complete && bg.naturalWidth) { ctx.globalAlpha = 0.7; ctx.drawImage(bg, ox, oy, w * scale, h * scale); ctx.globalAlpha = 1; }
       if (!bg && sil.width) { ctx.globalAlpha = 0.3; ctx.drawImage(sil, 0, 0); ctx.globalAlpha = 1; }
       // draw the lights onto an offscreen layer, then composite with a soft blur
       lc.setTransform(1, 0, 0, 1, 0, 0);
@@ -110,11 +110,13 @@
         if (r + g + b < 24) continue;
         const x = ox + nodes[i][0] * scale, y = oy + nodes[i][1] * scale;
         lc.fillStyle = `rgb(${r},${g},${b})`;
-        lc.beginPath(); lc.arc(x, y, 1.7 * dpr, 0, 6.2832); lc.fill();
+        lc.globalAlpha = 0.7; lc.beginPath(); lc.arc(x, y, 1.4 * dpr, 0, 6.2832); lc.fill(); lc.globalAlpha = 1;
       }
       ctx.globalCompositeOperation = 'lighter';
-      ctx.filter = 'blur(' + (1.6 * dpr) + 'px)';
+      ctx.filter = 'blur(' + (2.4 * dpr) + 'px)';
+      ctx.globalAlpha = 0.82;
       ctx.drawImage(lit, 0, 0);
+      ctx.globalAlpha = 1;
       ctx.filter = 'none';
       ctx.globalCompositeOperation = 'source-over';
     }
