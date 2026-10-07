@@ -10,16 +10,16 @@
 <meta property="og:description" content="Press play, turn it up, and watch the house. Every night, sunset to midnight.">
 <meta property="og:image" content="https://finetunedlights.com/display-photo.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Roboto:wght@400;500;700&display=swap">
-<link rel="stylesheet" href="style.css?v=23">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Roboto:wght@400;500;700&display=swap">
+<link rel="stylesheet" href="style.css?v=26">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
-<script src="show.js?v=23" defer></script>
-<script src="holiday.js?v=23" defer></script>
-<script src="roof-player.js?v=23" defer></script>
+<script src="show.js?v=26" defer></script>
+<script src="holiday.js?v=26" defer></script>
+<script src="roof-player.js?v=26" defer></script>
 </head>
 <body class="app dock">
 <main class="home">
-  <div class="masthead"><img src="banner.webp?v=23" alt="Fine Tuned Lights"></div>
+  <div class="masthead"><img src="banner.webp?v=26" alt="Fine Tuned Lights"></div>
   <div class="statusbar" id="status">Daily, sunset to midnight</div>
   <p class="line">Every night, <b>sunset to midnight</b> · <a href="https://maps.apple.com/?q=8209+NW+125th+St,+Oklahoma+City,+OK+73142">8209 NW 125th St</a></p>
   <div class="btns">
@@ -31,7 +31,7 @@
 
 <section class="player-dock" id="dock">
   <button class="grab" id="collapse" aria-label="Collapse player"><span></span></button>
-  <button class="dockbar" id="dockopen">&#9654;&nbsp; TUNE IN &middot; tap to listen</button>
+  <button class="dockbar" id="dockopen">Tune in &middot; tap to listen</button>
   <button class="reopen" id="reopen" aria-label="Open player"></button>
   <iframe id="player" src="https://player.pulsemesh.io/d/MZVS" title="Listen to the show" allow="autoplay; geolocation; microphone"></iframe>
 </section>
@@ -54,7 +54,7 @@
   window.addEventListener('DOMContentLoaded', async function () {
     try {
       var show = await Roofline.loadShow('like-its-christmas');
-      var r = Roofline.makeRenderer(document.getElementById('roof'), show, { background: 'house-silhouette.jpg?v=23' });
+      var r = Roofline.makeRenderer(document.getElementById('roof'), show, { background: 'house-silhouette.jpg?v=26' });
       var t0 = performance.now();
       r.start(function () {
         return window.__pmPositionMs ? window.__pmPositionMs() : (performance.now() - t0) % r.durationMs;

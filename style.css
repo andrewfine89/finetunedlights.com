@@ -23,11 +23,11 @@ main.player iframe{width:100%;height:100%;border:0;display:block}
 .fallback{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;
   gap:14px;padding:24px;text-align:center;background:var(--bg)}
 .fallback.hidden{display:none}
-.btn{display:inline-block;padding:14px 22px;border-radius:999px;color:#2a1c05;
+.btn{display:inline-block;padding:14px 22px;border-radius:10px;color:#2a1c05;
   font-weight:700;text-decoration:none;font-size:17px;
   background:linear-gradient(180deg,#cbab5c 0%,#a37d2a 36%,#7a5a1d 52%,#926d26 68%,#b8923e 100%);
-  border:1px solid #533d14;
-  box-shadow:inset 0 1px 0 rgba(240,222,165,.4), inset 0 -2px 5px rgba(55,36,6,.55), 0 2px 7px rgba(0,0,0,.5);
+  border:2px solid #533d14;
+  box-shadow:inset 0 0 0 1px rgba(240,222,165,.35), inset 0 -2px 5px rgba(55,36,6,.55), 0 2px 7px rgba(0,0,0,.5);
   text-shadow:0 1px 0 rgba(225,205,150,.35);color:#201603}
 footer.bar{flex:none;height:44px;display:flex;align-items:center;justify-content:center;
   gap:18px;border-top:1px solid var(--line);background:var(--bg);font-size:14px}
@@ -58,7 +58,7 @@ ul{padding-left:20px}
 .about .addr{color:var(--muted);margin:0 0 26px}
 .about .addr a{color:var(--muted)}
 .btns{display:flex;flex-direction:column;gap:9px;margin:0 -16px 10px;max-width:none}
-.btn.big{display:block;padding:12px 18px;font-size:16px;border-radius:999px}
+.btn.big{display:block;padding:13px 18px;font-size:20px;border-radius:10px}
 
 .about .rules{color:var(--muted);font-size:15px;margin:0 0 30px}
 .about .tiny{color:#6f6c63;font-size:12px}
@@ -90,7 +90,7 @@ body.dock{padding-bottom:104px}
 main.home{padding:0 16px 14px;text-align:center;max-width:560px;width:100%;margin:0 auto}
 main.home .house{display:block;width:100%;border-radius:14px;margin:6px 0 14px}
 main.home h1{font-size:22px;line-height:1.14;margin:4px 0 6px}
-main.home .line{color:var(--muted);font-size:13px;margin:6px 0 10px}
+main.home .line{color:var(--muted);font-size:14px;letter-spacing:.03em;margin:6px 0 10px}
 main.home .line b{color:var(--gold)}
 main.home .line a{color:var(--muted)}
 main.home .btns{margin-bottom:8px}
@@ -110,14 +110,14 @@ body.expanded main.home{display:none}
 /* banner masthead */
 .masthead{margin:0 -16px}
 .masthead img{display:block;width:100%;height:auto;max-height:26vh;object-fit:contain}
-.statusbar{text-align:center;font-size:13px;color:var(--gold-2);padding:4px 12px 6px}
+.statusbar{text-align:center;font-size:14px;color:var(--gold-2);padding:4px 12px 6px}
 .statusbar b{color:var(--gold);font-weight:700}
 .statusbar.on b{color:#6ec07f}
 
 /* logo palette: gold + green headline, gold accents */
 h1 .r{color:#d8382c}
 h1 .g{color:#6ec07f}
-.btn.alt{color:#d2b566;border:1px solid #946f26;text-shadow:none;
+.btn.alt{color:#d2b566;border:2px solid #946f26;text-shadow:none;
   background:linear-gradient(180deg,rgba(140,105,40,.24),rgba(70,52,18,.16));
   box-shadow:inset 0 1px 0 rgba(200,170,105,.18), 0 2px 5px rgba(0,0,0,.4)}
 
@@ -135,16 +135,16 @@ body.played .player-dock .dockbar{display:none}
 body.played:not(.expanded) .player-dock .reopen{display:block}
 
 /* ---- vintage radio theme ---- */
-.statusbar, .btn{font-family:'Cinzel', Georgia, serif}
-.btn.big{letter-spacing:.04em}
-.statusbar{letter-spacing:.06em}
+.statusbar, .btn, main.home .line, .player-dock .dockbar{font-family:'Playfair Display', Georgia, serif}
+.btn.big{letter-spacing:.01em}
+.statusbar{letter-spacing:.01em}
 /* house panel framed in brass like the header */
-.roofwrap{border:2px solid #7c5f22;
-  box-shadow:inset 0 0 0 1px rgba(240,217,143,.25), inset 0 2px 14px rgba(0,0,0,.6), 0 2px 8px rgba(0,0,0,.5)}
+.roofwrap{border:4px solid #8a6a26;
+  box-shadow:inset 0 0 0 2px rgba(240,217,143,.35), 0 0 0 1px #3a2b0c, inset 0 2px 14px rgba(0,0,0,.6), 0 2px 8px rgba(0,0,0,.5)}
 /* the music bar as a brass radio tuner */
-.player-dock{border-top:2px solid #7c5f22}
-body.played .player-dock{border-top:2px solid #7c5f22}
-.player-dock .dockbar{font-family:'Cinzel', Georgia, serif;letter-spacing:.1em;font-size:15px;
+.player-dock{border-top:4px solid #8a6a26}
+body.played .player-dock{border-top:4px solid #8a6a26}
+.player-dock .dockbar{letter-spacing:.02em;font-size:18px;
   color:#f0d98f;background:linear-gradient(180deg,#2b2414 0%,#191308 100%);
   border-top:1px solid #7c5f22;box-shadow:inset 0 10px 18px rgba(0,0,0,.5)}
 .player-dock .dockbar::after{content:"";position:absolute;left:14%;right:14%;bottom:16px;height:2px;border-radius:2px;
