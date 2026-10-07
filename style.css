@@ -115,8 +115,8 @@ body.expanded .player-dock .backbar{display:block}
 body.expanded main.home{display:none}
 
 /* live roofline hero on the landing page */
-.roofwrap{width:93%;margin:0 auto;border-radius:12px;overflow:hidden;background:#07080c}
-.roofwrap canvas{display:block;width:100%;aspect-ratio:1774/887;height:auto}
+.roofwrap{width:100%;margin:0;border-radius:12px;overflow:hidden;background:#0b0d14}
+.roofwrap canvas{display:block;width:100%;aspect-ratio:1774/830;height:auto}   /* a little shorter than the drawing: the house scales down a few px inside the full-width frame */
 
 /* banner masthead */
 .masthead{margin:10px 0 0}
