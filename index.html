@@ -45,6 +45,10 @@
   <p class="rules">Thanks for visiting our holiday light show! Please enjoy!<br>Kindly turn on parking lights, turn off headlights,<br>and avoid blocking traffic or driveways.</p>
 </main>
 
+<section class="about-panel" id="about" aria-label="About the show">
+  <button class="backbar" id="aboutback">Back to Fine Tuned Lights</button>
+  <main class="home about-body"></main>
+</section>
 <section class="player-dock" id="dock">
   <button class="backbar" id="collapse">Back to Fine Tuned Lights</button>
   <button class="dockbar" id="dockopen" aria-label="Tune in: tap to listen"><span class="dial"><b>TUNE IN</b><small>tap to listen</small><span class="needle"></span></span></button>
@@ -86,6 +90,22 @@
   document.getElementById('dockopen').addEventListener('click', open);
   document.getElementById('reopen').addEventListener('click', open);
   backEl.addEventListener('click', collapse);
+  // About opens in a panel over the page (a new page would stop the music); the content is about.html's own
+  var aboutBtn = document.querySelector('a[href="about.html"]'), aboutPanel = document.getElementById('about');
+  aboutBtn.addEventListener('click', function (e) {
+    e.preventDefault();
+    var show = function () { body.classList.add('about-open'); aboutPanel.scrollTop = 0; };
+    if (aboutPanel.dataset.loaded) return show();
+    fetch('about.html').then(function (r) { return r.text(); }).then(function (t) {
+      var doc = new DOMParser().parseFromString(t, 'text/html'), c = doc.getElementById('about-content');
+      if (!c) throw 0;
+      aboutPanel.querySelector('.about-body').innerHTML = c.innerHTML;
+      var sx = aboutPanel.querySelector('.season-x'), s = document.getElementById('season'); if (sx && s) sx.textContent = s.textContent;
+      var sh = aboutPanel.querySelector('.season-h'), h0 = document.getElementById('season-h'); if (sh && h0) sh.style.display = h0.style.display;
+      aboutPanel.dataset.loaded = '1'; show();
+    }).catch(function () { location.href = 'about.html'; });
+  });
+  document.getElementById('aboutback').addEventListener('click', function () { body.classList.remove('about-open'); });
   var loaded = false; document.getElementById('player').addEventListener('load', function () { loaded = true; });
   setTimeout(function () { if (!loaded) { var a = document.getElementById('expand'); a.textContent = 'Open the player to vote'; a.href = 'https://psm.sh/MZVS'; a.onclick = null; dock.style.display = 'none'; } }, 10000);
 

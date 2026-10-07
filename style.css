@@ -50,18 +50,9 @@ ul{padding-left:20px}
 .cta{margin:28px 0;text-align:center}
 @media (max-width:420px){.status{font-size:13px}.brand b{font-size:15px}}
 
-/* compact about page */
-.about{max-width:520px;margin:0 auto;padding:36px 16px 48px;text-align:center}
-.about h1{font-size:34px;margin:0 0 6px}
-.about .line{font-size:18px;color:var(--fg);margin:0 0 4px}
-.about .line b{color:var(--gold)}
-.about .addr{color:var(--muted);margin:0 0 26px}
-.about .addr a{color:var(--muted)}
+/* the two big buttons */
 .btns{display:flex;flex-direction:column;gap:10px;margin:0 0 10px;max-width:none}
 .btn.big{display:block;padding:11.5px 16px 7px;font-size:15px;font-weight:700;border-radius:12px;text-transform:uppercase;-webkit-text-stroke:.6px currentColor}
-
-.about .rules{color:var(--muted);font-size:15px;margin:0 0 30px}
-.about .tiny{color:#6f6c63;font-size:12px}
 
 /* holiday dressing: a string of bulbs under the header, snow in December */
 .bulbs{position:relative;height:34px;overflow:hidden;pointer-events:none}
@@ -74,13 +65,10 @@ ul{padding-left:20px}
 .snow{position:fixed;inset:0;pointer-events:none;overflow:hidden;z-index:0}
 .snow i{position:absolute;top:-10px;width:5px;height:5px;border-radius:50%;background:#fff;opacity:.7;animation:fall linear infinite}
 @keyframes fall{to{transform:translateY(110vh)}}
-.about,.top{position:relative;z-index:1}
 
 
 
 
-.about h1{font-size:34px;margin:0 0 6px}
-.about h1 .em{font-size:40px;display:block}
 @media (prefers-reduced-motion:reduce){.bulb,.snow i{animation:none}}
 
 
@@ -104,13 +92,14 @@ main.home .dates::after{content:"";display:block;width:56px;height:1px;margin:9p
 /* in flow and sticky: sits 10px under the note when the page fits the screen, sticks to the bottom edge when it does not */
 .player-dock{position:sticky;bottom:10px;width:calc(100% - 24px);max-width:536px;margin:0 auto 10px;z-index:5;height:96px;overflow:hidden;border-radius:12px;background:#0f0b06}   /* same width as the 560px column (12px padding each side) on every screen */
 .player-dock iframe{position:absolute;left:0;right:0;bottom:0;width:100%;height:100vh;height:100dvh;border:0}
-.player-dock .backbar{position:absolute;top:0;left:0;right:0;height:60px;z-index:3;display:none;cursor:pointer;border:0;border-bottom:4px solid #cf9a5c;
+.player-dock .backbar{position:absolute;top:0;left:0;right:0;z-index:3;display:none}
+.backbar{display:block;width:100%;height:60px;cursor:pointer;border:0;border-bottom:4px solid #cf9a5c;text-decoration:none;text-align:center;line-height:56px;box-sizing:border-box;
   font-weight:700;font-size:16px;letter-spacing:.12em;text-transform:uppercase;color:#2a1403;-webkit-text-stroke:.6px currentColor;
   background:linear-gradient(180deg,#edbc7f 0%,#cf9a5c 30%,#af641d 52%,#b8722c 64%,#dba76a 100%)}
 body.expanded .player-dock{position:fixed;left:0;right:0;bottom:0;margin:0;width:auto;max-width:none;height:100vh;height:100dvh;border:0;border-radius:0}
 body.expanded .player-dock .backbar{display:block}
 /* leftward chevron on the Back bar, drawn (no glyph) */
-.player-dock .backbar::before{content:"";display:inline-block;width:11px;height:11px;border-left:3px solid currentColor;border-bottom:3px solid currentColor;
+.backbar::before{content:"";display:inline-block;width:11px;height:11px;border-left:3px solid currentColor;border-bottom:3px solid currentColor;
   transform:rotate(45deg);margin:0 14px 0 0;vertical-align:middle;position:relative;top:-2px}
 body.expanded main.home{display:none}
 
@@ -154,7 +143,7 @@ body.played .player-dock .dockbar{display:none}
 body.played:not(.expanded) .player-dock .reopen{display:block}
 
 /* ---- vintage radio theme ---- */
-.btn, .player-dock .backbar{font-family:'Josefin Sans',Futura,'Trebuchet MS',sans-serif}
+.btn, .backbar, .card h2{font-family:'Josefin Sans',Futura,'Trebuchet MS',sans-serif}
 .statusbar, main.home .line{font-family:'Playfair Display', Georgia, serif}
 .btn.big{letter-spacing:.1em}
 .statusbar{letter-spacing:.01em}
@@ -185,3 +174,33 @@ body.expanded .player-dock .dockbar{display:none}
    bottom 96px of their page, so the frame is nudged down to centre it) */
 body.played:not(.expanded) .player-dock{height:96px;border:4px solid #cf9a5c;box-shadow:0 0 0 1px #553e16, inset 0 0 0 1px #7c4a1b, 0 2px 8px rgba(0,0,0,.5);background:#0f0b06}
 body.played:not(.expanded) .player-dock iframe{bottom:-18px}
+
+/* About: cards in the same brass, shown in a panel over the landing page (or standalone at about.html) */
+.about-panel{position:fixed;inset:0;z-index:4;display:none;overflow:auto;-webkit-overflow-scrolling:touch;background:var(--bg)}
+.about-panel .backbar{position:sticky;top:0;z-index:2}
+main.about-body{padding:10px 12px 130px}
+body.about-open .about-panel{display:block}
+body.about-open main.home{display:none}
+body.about-open .about-panel main.home{display:block}
+body.about-open .player-dock{position:fixed;left:50%;bottom:10px;margin:0;transform:translateX(-50%)}
+body.about-open.expanded .player-dock{left:0;transform:none}
+body.standalone main.home{padding-top:10px;padding-bottom:24px}
+.card{border:4px solid #cf9a5c;border-radius:12px;padding:12px 14px 14px;margin:0 0 10px;background:#15110b;text-align:left;
+  box-shadow:0 0 0 1px #553e16, inset 0 0 0 1px #7c4a1b, 0 2px 8px rgba(0,0,0,.5)}
+.card .shot{display:block;width:100%;height:auto;border-radius:8px;margin:0 0 12px;background:#0b0d14}
+.card h2{font-weight:700;font-size:15px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin:0 0 6px}
+.card p{font-family:'Playfair Display',Georgia,serif;color:#e6d6b4;font-size:15px;line-height:1.5;margin:0}
+.card p.small{color:#c4ab7a;font-style:italic;font-weight:500;font-size:13.5px;margin-top:10px}
+.specs{font-family:'Playfair Display',Georgia,serif;display:grid;grid-template-columns:auto 1fr;gap:6px 14px;margin:0;font-size:15px;line-height:1.4}
+.specs dt{color:var(--gold);font-weight:700}
+.specs dd{color:#e6d6b4;margin:0}
+.songs{list-style:none;margin:0;padding:0;font-family:'Playfair Display',Georgia,serif}
+.songs li{padding:9px 0;border-top:1px solid rgba(207,154,92,.25)}
+.songs li:first-child{padding-top:2px;border-top:0}
+.songs b{display:block;color:#f2d08f;font-size:16px;font-weight:700}
+.songs i{display:block;color:var(--gold);font-style:normal;font-size:13px;letter-spacing:.03em;margin:1px 0 3px}
+.songs span{display:block;color:#e6d6b4;font-size:14.5px;line-height:1.45}
+.card .line{text-align:center}
+.card .dates{margin-top:4px}
+.card .dates b{font-size:14px;letter-spacing:.04em}   /* the card is 36px narrower than the page block; keeps the Christmas line on one row */
+.card .rules{text-align:center;margin-bottom:0}

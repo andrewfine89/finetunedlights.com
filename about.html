@@ -2,40 +2,66 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Fine Tuned Lights</title>
-<meta name="description" content="A light show synced to music on your phone. Every night, sunset to midnight.">
-<meta name="theme-color" content="#121216">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>About the show · Fine Tuned Lights</title>
+<meta name="description" content="A family-built roofline light show in Oklahoma City: the roof, the gear, the playlist and when to come.">
+<meta name="theme-color" content="#0b0d14">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;0,900;1,500&family=Josefin+Sans:wght@600;700&family=Roboto:wght@400;500;700&display=swap">
-<link rel="stylesheet" href="style.css?v=4">
+<link rel="stylesheet" href="style.css?v=50">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
-<script src="show.js?v=4" defer></script>
-<script src="holiday.js?v=4" defer></script>
+<script src="show.js?v=50" defer></script>
 </head>
-<body>
-<header class="top">
-  <a class="brand" href="/">
-    <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M3 20 L16 6 L29 20" fill="none" stroke="#c7b7ff" stroke-width="2.5" stroke-linejoin="round"/>
-      <g fill="#dcd2ff"><circle cx="6" cy="17.5" r="1.6"/><circle cx="10" cy="13.2" r="1.6"/><circle cx="14" cy="8.9" r="1.6"/><circle cx="18" cy="8.9" r="1.6"/><circle cx="22" cy="13.2" r="1.6"/><circle cx="26" cy="17.5" r="1.6"/></g></svg>
-    <b>Fine Tuned Lights</b>
-  </a>
-  <div class="status" id="status">Sunset to 10 pm, midnight on weekends</div>
-</header>
-<div class="bulbs" id="bulbs" aria-hidden="true"></div>
-
-<main class="about">
-  <h1><span class="em"><span class="r">The lights</span> <span class="g">dance.</span></span>Your phone plays the music.</h1>
-  <p class="line"><span id="season-h"><b>Halloween October 24 to 31</b> and </span><b>Christmas <span id="season">November 27 to January 1</span></b>, sunset to 10 pm, midnight on weekends and holidays.</p>
-  <p class="addr"><a href="https://maps.apple.com/?q=8209+NW+125th+St,+Oklahoma+City,+OK+73142">8209 NW 125th St, Oklahoma City</a></p>
-
-  <div class="btns">
-    <a class="btn big" href="/">▶&nbsp; Live audio</a>
-    <a class="btn big alt" href="https://psm.sh/MZVS">Vote for the next song</a>
-  </div>
-
-  <p class="rules">Headlights off, music in the car, driveways clear. Thank you.</p>
-  <p class="tiny">No app needed. Built in xLights, audio by PulseMesh.</p>
+<body class="app standalone">
+<a class="backbar" href="/">Back to Fine Tuned Lights</a>
+<main class="home">
+<div id="about-content">
+  <section class="card">
+    <img class="shot" src="display-photo.jpg?v=50" alt="The roofline lit in red, green and gold">
+    <h2>The show</h2>
+    <p>Fine Tuned Lights is a family-built roofline light show in northwest Oklahoma City, in its first season in 2026. Every bulb on the roof is its own pixel, so the whole house moves to the music. The music plays on your phone through the Tune In bar, so the street stays quiet.</p>
+  </section>
+  <section class="card">
+    <img class="shot" src="roof-map.svg?v=50" alt="Map of the pixels along the roofline">
+    <h2>The roof</h2>
+    <p>Thirteen strands trace every eave, ridge, hip and dormer, the tower and the entry arch: about 700 pixels, one every six inches, each one addressed on its own. The strands are built long at the kitchen table and trimmed to fit on the roof on install day. The far right end of the house faces the back yard, so it stays dark on purpose.</p>
+  </section>
+  <section class="card">
+    <img class="shot" src="about-build.webp?v=50" alt="Building the pixel strands at the kitchen table" onerror="this.remove()">
+    <h2>The family</h2>
+    <p>This is a family project. The kids help build the strands, choreograph the sequences and run the shows, and they have opinions about the songs.</p>
+  </section>
+  <section class="card">
+    <img class="shot" src="about-install.webp?v=50" alt="Clipping the strands to the eaves" onerror="this.remove()">
+    <h2>The gear</h2>
+    <dl class="specs">
+      <dt>Pixels</dt><dd>12&nbsp;V bullet nodes, six inches apart, on 13 strands</dd>
+      <dt>Controller</dt><dd>Experience Lights Genius Pro, 16 ports</dd>
+      <dt>Power</dt><dd>Two Meanwell 350&nbsp;W supplies</dd>
+      <dt>Player</dt><dd>Raspberry Pi running Falcon Player</dd>
+      <dt>Sequencing</dt><dd>xLights</dd>
+      <dt>Audio to your phone</dt><dd>PulseMesh. No app, no FM.</dd>
+    </dl>
+  </section>
+  <section class="card">
+    <h2>The playlist</h2>
+    <ul class="songs">
+      <li><b>Like It's Christmas</b><i>Jonas Brothers · 3:20</i><span>The opener: red, green and gold across the whole roof.</span></li>
+      <li><b>Golden</b><i>KPop Demon Hunters · 2:49</i><span>The roof moves as one; the entry arch and the dormers get parts of their own.</span></li>
+      <li><b>Flashing Lights</b><i>Kanye West · 3:57</i><span>A gold twinkle show, with a white-sparkle-and-sunset version in the works.</span></li>
+      <li><b>Boo To You</b><i>Halloween Parade · 17:25</i><span>The whole parade: lightning, the bell on the tower, the Haunted Mansion in ghost blue, candy that bounces.</span></li>
+      <li><b>Between songs</b><i>20 to 40 seconds each</i><span>A classic multicolor chase, a Pac-Man chase around the right wing, MERRY CHRISTMAS in Morse code, and a Mario who runs the roof and slides down the last hip.</span></li>
+    </ul>
+    <p class="small">Voting for the next song is coming. Until then the house picks.</p>
+  </section>
+  <section class="card">
+    <h2>When to come</h2>
+    <p class="line dates"><span class="season-h"><b>Halloween &middot; October 24 to 31</b><br></span><b>Christmas &middot; <span class="season-x">November 27 to January 1</span></b></p>
+    <p class="line hrs">Sunset to 10 pm,<br>midnight on weekends and holidays</p>
+    <p class="line addr"><a href="https://maps.apple.com/?q=8209+NW+125th+St,+Oklahoma+City,+OK+73142">8209 NW 125th St</a></p>
+    <p class="rules">Thanks for visiting our holiday light show! Please enjoy!<br>Kindly turn on parking lights, turn off headlights,<br>and avoid blocking traffic or driveways.</p>
+  </section>
+</div>
 </main>
 </body>
 </html>
