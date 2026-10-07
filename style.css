@@ -104,7 +104,7 @@ body.expanded main.home{display:none}
 .roofwrap canvas{display:block;width:100%;aspect-ratio:1774/887;height:auto}
 
 /* banner masthead */
-.masthead{flex:none}
+.masthead{margin:0 -16px}
 .masthead img{display:block;width:100%;height:auto}
 .statusbar{flex:none;text-align:center;font-size:13px;color:var(--gold-2);padding:5px 12px 8px}
 .statusbar b{color:var(--gold);font-weight:700}
