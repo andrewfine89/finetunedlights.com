@@ -57,8 +57,8 @@ ul{padding-left:20px}
 .about .line b{color:var(--gold)}
 .about .addr{color:var(--muted);margin:0 0 26px}
 .about .addr a{color:var(--muted)}
-.btns{display:flex;flex-direction:column;gap:9px;margin:0 -16px 14px;max-width:none}
-.btn.big{display:block;padding:13px 18px;font-size:16px;border-radius:999px}
+.btns{display:flex;flex-direction:column;gap:9px;margin:0 -16px 10px;max-width:none}
+.btn.big{display:block;padding:12px 18px;font-size:16px;border-radius:999px}
 
 .about .rules{color:var(--muted);font-size:15px;margin:0 0 30px}
 .about .tiny{color:#6f6c63;font-size:12px}
@@ -87,10 +87,10 @@ ul{padding-left:20px}
 
 /* home page with the player docked at the bottom */
 body.dock{padding-bottom:104px}
-main.home{padding:0 16px 24px;text-align:center;max-width:560px;width:100%;margin:0 auto}
+main.home{padding:0 16px 14px;text-align:center;max-width:560px;width:100%;margin:0 auto}
 main.home .house{display:block;width:100%;border-radius:14px;margin:6px 0 14px}
 main.home h1{font-size:22px;line-height:1.14;margin:4px 0 6px}
-main.home .line{color:var(--muted);font-size:14px;margin:0 0 12px}
+main.home .line{color:var(--muted);font-size:13px;margin:6px 0 10px}
 main.home .line b{color:var(--gold)}
 main.home .line a{color:var(--muted)}
 main.home .btns{margin-bottom:8px}
@@ -104,12 +104,12 @@ body.expanded .player-dock .grab{display:block}
 body.expanded main.home{display:none}
 
 /* live roofline hero on the landing page */
-.roofwrap{width:100%;margin:2px 0 10px;border-radius:12px;overflow:hidden;background:#07080c}
+.roofwrap{width:100%;margin:0;border-radius:12px;overflow:hidden;background:#07080c}
 .roofwrap canvas{display:block;width:100%;aspect-ratio:1774/887;height:auto}
 
 /* banner masthead */
 .masthead{margin:0 -16px}
-.masthead img{display:block;width:100%;height:auto;max-height:34vh;object-fit:contain}
+.masthead img{display:block;width:100%;height:auto;max-height:26vh;object-fit:contain}
 .statusbar{text-align:center;font-size:13px;color:var(--gold-2);padding:4px 12px 6px}
 .statusbar b{color:var(--gold);font-weight:700}
 .statusbar.on b{color:#6ec07f}
@@ -128,3 +128,8 @@ h1 .g{color:#6ec07f}
   background:#15151b;border-top:1px solid var(--line)}
 .player-dock .dockbar:active{background:#1b1b22}
 body.expanded .player-dock .dockbar{display:none}
+
+/* after the first listen, the collapsed strip shows the now-playing bar (tap to reopen) */
+body.played .player-dock .dockbar{display:none}
+.player-dock .reopen{display:none;position:absolute;inset:0;z-index:1;background:transparent;border:0;cursor:pointer}
+body.played:not(.expanded) .player-dock .reopen{display:block}

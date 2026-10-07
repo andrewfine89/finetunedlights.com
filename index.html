@@ -11,37 +11,39 @@
 <meta property="og:image" content="https://finetunedlights.com/display-photo.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap">
-<link rel="stylesheet" href="style.css?v=20">
+<link rel="stylesheet" href="style.css?v=22">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
-<script src="show.js?v=20" defer></script>
-<script src="holiday.js?v=20" defer></script>
-<script src="roof-player.js?v=20" defer></script>
+<script src="show.js?v=22" defer></script>
+<script src="holiday.js?v=22" defer></script>
+<script src="roof-player.js?v=22" defer></script>
 </head>
 <body class="app dock">
 <main class="home">
-  <div class="masthead"><img src="banner.webp?v=20" alt="Fine Tuned Lights"></div>
+  <div class="masthead"><img src="banner.webp?v=22" alt="Fine Tuned Lights"></div>
   <div class="statusbar" id="status">Daily, sunset to midnight</div>
-  <h1><span class="r">The lights</span> <span class="g">dance.</span><br>Your phone plays the music.</h1>
   <p class="line">Every night, <b>sunset to midnight</b> · <a href="https://maps.apple.com/?q=8209+NW+125th+St,+Oklahoma+City,+OK+73142">8209 NW 125th St</a></p>
   <div class="btns">
     <a class="btn big" href="#" id="expand">Vote for the next song</a>
     <a class="btn big alt" href="about.html">About the show</a>
   </div>
-  <p class="rules">A few kind asks: please park with your headlights off, keep the music in your car, and leave the driveways clear for the neighbors. Thank you for visiting.</p>
   <div class="roofwrap"><canvas id="roof"></canvas></div>
 </main>
 
 <section class="player-dock" id="dock">
   <button class="grab" id="collapse" aria-label="Collapse player"><span></span></button>
   <button class="dockbar" id="dockopen">&#9654;&nbsp; Tap to listen to the music</button>
+  <button class="reopen" id="reopen" aria-label="Open player"></button>
   <iframe id="player" src="https://player.pulsemesh.io/d/MZVS" title="Listen to the show" allow="autoplay; geolocation; microphone"></iframe>
 </section>
 
 <script>
-  var body = document.body, dock = document.getElementById('dock');
-  document.getElementById('expand').addEventListener('click', function (e) { e.preventDefault(); body.classList.add('expanded'); });
-  document.getElementById('dockopen').addEventListener('click', function () { body.classList.add('expanded'); });
-  document.getElementById('collapse').addEventListener('click', function () { body.classList.remove('expanded'); });
+  var body = document.body, dock = document.getElementById('dock'), autoCollapse = 0;
+  function openStay() { clearTimeout(autoCollapse); body.classList.add('expanded', 'played'); }
+  function openListen() { body.classList.add('expanded', 'played'); clearTimeout(autoCollapse); autoCollapse = setTimeout(function () { body.classList.remove('expanded'); }, 6500); }
+  document.getElementById('expand').addEventListener('click', function (e) { e.preventDefault(); openStay(); });
+  document.getElementById('dockopen').addEventListener('click', openListen);
+  document.getElementById('reopen').addEventListener('click', openStay);
+  document.getElementById('collapse').addEventListener('click', function () { clearTimeout(autoCollapse); body.classList.remove('expanded'); });
   var loaded = false; document.getElementById('player').addEventListener('load', function () { loaded = true; });
   setTimeout(function () { if (!loaded) { var a = document.getElementById('expand'); a.textContent = 'Open the player to vote'; a.href = 'https://psm.sh/MZVS'; a.onclick = null; dock.style.display = 'none'; } }, 10000);
 
@@ -52,7 +54,7 @@
   window.addEventListener('DOMContentLoaded', async function () {
     try {
       var show = await Roofline.loadShow('like-its-christmas');
-      var r = Roofline.makeRenderer(document.getElementById('roof'), show, { background: 'house-silhouette.jpg?v=20' });
+      var r = Roofline.makeRenderer(document.getElementById('roof'), show, { background: 'house-silhouette.jpg?v=22' });
       var t0 = performance.now();
       r.start(function () {
         return window.__pmPositionMs ? window.__pmPositionMs() : (performance.now() - t0) % r.durationMs;
