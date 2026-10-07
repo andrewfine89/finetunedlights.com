@@ -86,7 +86,7 @@
       ctx.setTransform(1, 0, 0, 1, 0, 0);
       ctx.fillStyle = '#0b0d14';
       ctx.fillRect(0, 0, canvas.width, canvas.height);
-      if (bg && bg.complete && bg.naturalWidth) { ctx.globalAlpha = 0.7; ctx.drawImage(bg, ox, oy, w * scale, h * scale); ctx.globalAlpha = 1; }
+      if (bg && bg.complete && bg.naturalWidth) { ctx.globalAlpha = 0.78; ctx.drawImage(bg, ox, oy, w * scale, h * scale); ctx.globalAlpha = 1; }
       if (!bg && sil.width) { ctx.globalAlpha = 0.3; ctx.drawImage(sil, 0, 0); ctx.globalAlpha = 1; }
       // draw the lights onto an offscreen layer, then composite with a soft blur
       lc.setTransform(1, 0, 0, 1, 0, 0);
