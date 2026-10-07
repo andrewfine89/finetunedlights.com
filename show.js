@@ -93,6 +93,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const y = partsIn(new Date(), TZ).y;
     seasonEl.textContent = 'November ' + (thanksgivingDay(y) + 1) + ' to January 1';
   }
+  const hallEl = document.getElementById('season-h');   // the Halloween line only while that show is on the calendar
+  if (hallEl && !HALLOWEEN) hallEl.style.display = 'none';
   const el = document.getElementById('status');
   if (!el) return;
   const paint = () => { const s = showStatus(); el.innerHTML = s.text; el.classList.toggle('on', s.on); };
