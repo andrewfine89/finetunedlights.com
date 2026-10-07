@@ -65,9 +65,19 @@
   function open() {
     clearTimers(); body.classList.add('expanded');
     try { backEl.focus({ preventScroll: true }); } catch (e) {}
+    // A real tap anywhere in this page or inside the player gives the page "transient user activation" for about
+    // 5 s, and a script cannot fake it. Our own Tune In tap has expired 5.3 s after open(), so activation seen
+    // after that means a finger landed on the player (PulseMesh's "Get ready"). Focus moving into the player
+    // is only a hint: the player's own script grabs focus when it finishes loading, which used to look like a tap.
+    var t0 = performance.now(), ua = navigator.userActivation, focusAt = 0;
     setTimeout(function () {
       watch = setInterval(function () {
-        if (document.activeElement === playerEl) { clearTimers(); body.classList.add('played'); ret = setTimeout(collapse, 2500); }
+        var now = performance.now();
+        if (!focusAt && document.activeElement === playerEl) focusAt = now;
+        var tapped = ua ? (ua.isActive && now - t0 > 5300) : !!focusAt;
+        if (!tapped) return;
+        clearTimers(); body.classList.add('played');
+        ret = setTimeout(collapse, Math.max(300, (focusAt || now) + 2500 - now));
       }, 150);
       fallback = setTimeout(collapse, 30000);
     }, 600);
