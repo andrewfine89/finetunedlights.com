@@ -10,16 +10,16 @@
 <meta property="og:description" content="Press play, turn it up, and watch the house. Every night, sunset to midnight.">
 <meta property="og:image" content="https://finetunedlights.com/display-photo.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;900&family=Josefin+Sans:wght@700&family=Roboto:wght@400;500;700&display=swap">
-<link rel="stylesheet" href="style.css?v=47">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;900&family=Josefin+Sans:wght@600;700&family=Roboto:wght@400;500;700&display=swap">
+<link rel="stylesheet" href="style.css?v=48">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
-<script src="show.js?v=47" defer></script>
-<script src="holiday.js?v=47" defer></script>
-<script src="roof-player.js?v=47" defer></script>
+<script src="show.js?v=48" defer></script>
+<script src="holiday.js?v=48" defer></script>
+<script src="roof-player.js?v=48" defer></script>
 </head>
 <body class="app dock">
 <main class="home">
-  <div class="masthead"><img id="banner" src="banner.webp?v=47" alt="Fine Tuned Lights"></div>
+  <div class="masthead"><img id="banner" src="banner.webp?v=48" alt="Fine Tuned Lights"></div>
 <script>
   // Halloween header Oct 1 - Nov 1 (show's time zone); Christmas header the rest of the year.
   (function () {
@@ -27,7 +27,7 @@
     var o = {}; f.formatToParts(new Date()).forEach(function (p) { o[p.type] = p.value; });
     var m = +o.month, d = +o.day;
     window.__halloween = (m === 10 || (m === 11 && d === 1));
-    if (window.__halloween) document.getElementById('banner').src = 'banner-halloween.webp?v=47';
+    if (window.__halloween) document.getElementById('banner').src = 'banner-halloween.webp?v=48';
   })();
 </script>
   <div class="statusbar" id="status">Sunset to 10 pm, midnight on weekends</div>
@@ -36,7 +36,7 @@
     <a class="btn big alt" href="about.html">About the show</a>
   </div>
   <div class="roofwrap"><canvas id="roof"></canvas></div>
-  <p class="line"><b id="season">Nov 27 to Jan 1</b><br>Sunset to 10 pm, midnight on weekends and holidays<br><a href="https://maps.apple.com/?q=8209+NW+125th+St,+Oklahoma+City,+OK+73142">8209 NW 125th St</a></p>
+  <p class="line"><b id="season">November 27 to January 1</b><br>Sunset to 10 pm, midnight on weekends and holidays<br><a href="https://maps.apple.com/?q=8209+NW+125th+St,+Oklahoma+City,+OK+73142">8209 NW 125th St</a></p>
   <p class="rules">Thanks for visiting our holiday light show! Please enjoy!<br>Kindly turn on parking lights, turn off headlights,<br>and avoid blocking traffic or driveways.</p>
 </main>
 
@@ -72,7 +72,7 @@
   document.getElementById('reopen').addEventListener('click', open);
   backEl.addEventListener('click', collapse);
   // the generated tuner panel takes over the bar once it has loaded (CSS tuner until then, or if it is missing)
-  var panel = new Image(); panel.onload = function () { document.getElementById('dock').classList.add('panel'); }; panel.src = 'tuner.webp?v=47';
+  var panel = new Image(); panel.onload = function () { document.getElementById('dock').classList.add('panel'); }; panel.src = 'tuner.webp?v=48';
   var loaded = false; document.getElementById('player').addEventListener('load', function () { loaded = true; });
   setTimeout(function () { if (!loaded) { var a = document.getElementById('expand'); a.textContent = 'Open the player to vote'; a.href = 'https://psm.sh/MZVS'; a.onclick = null; dock.style.display = 'none'; } }, 10000);
 
@@ -83,7 +83,7 @@
   window.addEventListener('DOMContentLoaded', async function () {
     try {
       var show = await Roofline.loadShow('like-its-christmas');
-      var r = Roofline.makeRenderer(document.getElementById('roof'), show, { background: (window.__halloween ? 'house-night-halloween.jpg' : 'house-night.jpg') + '?v=47' });
+      var r = Roofline.makeRenderer(document.getElementById('roof'), show, { background: (window.__halloween ? 'house-night-halloween.jpg' : 'house-night.jpg') + '?v=48' });
       var t0 = performance.now();
       r.start(function () {
         return window.__pmPositionMs ? window.__pmPositionMs() : (performance.now() - t0) % r.durationMs;

@@ -91,7 +91,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const seasonEl = document.getElementById('season');
   if (seasonEl) {
     const y = partsIn(new Date(), TZ).y;
-    seasonEl.textContent = 'Nov ' + (thanksgivingDay(y) + 1) + ' to Jan 1';
+    seasonEl.textContent = 'November ' + (thanksgivingDay(y) + 1) + ' to January 1';
   }
   const el = document.getElementById('status');
   if (!el) return;

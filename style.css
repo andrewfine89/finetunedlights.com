@@ -58,7 +58,7 @@ ul{padding-left:20px}
 .about .addr{color:var(--muted);margin:0 0 26px}
 .about .addr a{color:var(--muted)}
 .btns{display:flex;flex-direction:column;gap:10px;margin:0 0 10px;max-width:none}
-.btn.big{display:block;padding:12px 18px;font-size:19px;font-weight:900;border-radius:12px;text-transform:uppercase}
+.btn.big{display:block;padding:15px 18px 11px;font-size:17px;font-weight:700;border-radius:12px;text-transform:uppercase;-webkit-text-stroke:.7px currentColor}
 
 .about .rules{color:var(--muted);font-size:15px;margin:0 0 30px}
 .about .tiny{color:#6f6c63;font-size:12px}
@@ -91,14 +91,14 @@ main.home{padding:0 12px 14px;text-align:center;max-width:560px;width:100%;margi
 main.home .house{display:block;width:100%;border-radius:14px;margin:6px 0 14px}
 main.home h1{font-size:22px;line-height:1.14;margin:4px 0 6px}
 main.home .line{color:var(--muted);font-size:14px;letter-spacing:.03em;line-height:1.5;margin:5px 0 0}
-main.home .line b{color:var(--gold)}
+main.home .line b{color:var(--gold);text-transform:uppercase;letter-spacing:.04em}
 main.home .line a{color:var(--muted)}
 main.home .btns{margin-bottom:10px}
 main.home .rules{font-family:'Playfair Display', Georgia, serif;color:#8f8a7c;font-size:13px;line-height:1.6;margin:0 auto 10px;max-width:420px}
 .player-dock{position:fixed;left:12px;right:12px;bottom:10px;z-index:5;height:96px;overflow:hidden;border-radius:12px;background:#0f0b06}
 .player-dock iframe{position:absolute;left:0;right:0;bottom:0;width:100%;height:100vh;height:100dvh;border:0}
 .player-dock .backbar{position:absolute;top:0;left:0;right:0;height:60px;z-index:3;display:none;cursor:pointer;border:0;border-bottom:4px solid #d99a3a;
-  font-family:'Playfair Display', Georgia, serif;font-weight:900;font-size:17px;letter-spacing:.08em;text-transform:uppercase;color:#2a1403;
+  font-weight:700;font-size:16px;letter-spacing:.12em;text-transform:uppercase;color:#2a1403;-webkit-text-stroke:.6px currentColor;
   background:linear-gradient(180deg,#f6c75e 0%,#e2a43f 30%,#b8742a 50%,#c5842f 62%,#eab24e 100%)}
 body.expanded .player-dock{left:0;right:0;bottom:0;height:100vh;height:100dvh;border:0;border-radius:0}
 body.expanded .player-dock .backbar{display:block}
@@ -112,9 +112,9 @@ body.expanded main.home{display:none}
 .roofwrap canvas{display:block;width:100%;aspect-ratio:1774/887;height:auto}
 
 /* banner masthead */
-.masthead{margin:0}
+.masthead{margin:10px 0 0}
 .masthead img{display:block;width:100%;height:auto;max-height:26vh;object-fit:contain;border-radius:12px}
-.statusbar{text-align:center;font-size:14px;line-height:1.3;color:var(--gold-2);padding:6.4px 12px}
+.statusbar{text-align:center;font-size:15px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;line-height:1.3;color:var(--gold-2);padding:5.1px 12px 6.4px}
 .statusbar b{color:var(--gold);font-weight:700}
 .statusbar.on b{color:#6ec07f}
 
@@ -133,8 +133,9 @@ body.played .player-dock .dockbar{display:none}
 body.played:not(.expanded) .player-dock .reopen{display:block}
 
 /* ---- vintage radio theme ---- */
-.statusbar, .btn, main.home .line, .player-dock .dockbar{font-family:'Playfair Display', Georgia, serif}
-.btn.big{letter-spacing:.07em}
+.btn, .player-dock .backbar{font-family:'Josefin Sans',Futura,'Trebuchet MS',sans-serif}
+.statusbar, main.home .line, .player-dock .dockbar{font-family:'Playfair Display', Georgia, serif}
+.btn.big{letter-spacing:.1em}
 .statusbar{letter-spacing:.01em}
 /* house panel framed in brass like the header */
 .roofwrap{border:4px solid #d99a3a;
@@ -174,10 +175,10 @@ body.expanded .player-dock .dockbar{display:none}
 body.played:not(.expanded) .player-dock{height:96px;border:4px solid #d99a3a;box-shadow:0 0 0 1px #4a2200, inset 0 0 0 1px #6a3004, 0 2px 8px rgba(0,0,0,.5);background:#0f0b06}
 /* PulseMesh's now-playing bar sits high in the bottom 96px of its page; nudge the frame down so the bar is centred in our box */
 body.played:not(.expanded) .player-dock iframe{bottom:-18px}
-.player-dock.panel .dockbar{padding:0;gap:0;background:#000 url(tuner.webp?v=47) center/cover no-repeat}
+.player-dock.panel .dockbar{padding:0;gap:0;background:#000 url(tuner.webp?v=48) center/cover no-repeat}
 .player-dock.panel .dockbar .knob,.player-dock.panel .dockbar .scale{display:none}
 .player-dock.panel .dockbar .dial{position:absolute;left:15.7%;right:16%;top:max(0px,calc(var(--hd) / 2 - .25 * var(--h)));bottom:max(0px,calc(var(--hd) / 2 - .22 * var(--h)));height:auto;z-index:2;
-  border:0;border-radius:0;background:none;box-shadow:none;flex-direction:row;align-items:center;justify-content:center;gap:0;padding:0 0 calc(.12 * var(--h));overflow:visible}
+  border:0;border-radius:0;background:none;box-shadow:none;flex-direction:row;align-items:center;justify-content:center;gap:0;padding:0 0 calc(.09 * var(--h));overflow:visible}
 .player-dock.panel .dockbar:active .dial{filter:none}
 .player-dock.panel .dockbar .dial b,.player-dock.panel .dockbar .dial small{flex:none;position:relative;z-index:1;font-family:'Josefin Sans',Futura,'Trebuchet MS',sans-serif;font-weight:700;
   font-size:clamp(11px, 3.4vw, 14px);line-height:1;letter-spacing:.14em;text-transform:uppercase;color:#f3d383;text-shadow:0 0 10px rgba(255,190,80,.55), 0 1px 0 rgba(0,0,0,.7)}
