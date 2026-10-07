@@ -71,6 +71,8 @@
   document.getElementById('dockopen').addEventListener('click', open);
   document.getElementById('reopen').addEventListener('click', open);
   backEl.addEventListener('click', collapse);
+  // the generated tuner panel takes over the bar once it has loaded (CSS tuner until then, or if it is missing)
+  var panel = new Image(); panel.onload = function () { document.getElementById('dock').classList.add('panel'); }; panel.src = 'tuner.webp?v=46';
   var loaded = false; document.getElementById('player').addEventListener('load', function () { loaded = true; });
   setTimeout(function () { if (!loaded) { var a = document.getElementById('expand'); a.textContent = 'Open the player to vote'; a.href = 'https://psm.sh/MZVS'; a.onclick = null; dock.style.display = 'none'; } }, 10000);
 

@@ -1,7 +1,7 @@
 :root{
   /* matched to the PulseMesh web player: near-black, lavender pill buttons, Roboto */
   --bg:#121216;--panel:#1e1e26;--fg:#f2f1f6;--muted:#a6a4b3;
-  --gold:#cda24e;--gold-2:#ecd38f;--line:#2e2a20;
+  --gold:#e8ad3e;--gold-2:#f3d383;--line:#2e2a20;
   --max:720px;
 }
 *{box-sizing:border-box}
@@ -23,12 +23,12 @@ main.player iframe{width:100%;height:100%;border:0;display:block}
 .fallback{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;
   gap:14px;padding:24px;text-align:center;background:var(--bg)}
 .fallback.hidden{display:none}
-.btn{display:inline-block;padding:14px 22px;border-radius:12px;color:#2a1c05;
+.btn{display:inline-block;padding:14px 22px;border-radius:12px;color:#2a1403;
   font-weight:700;text-decoration:none;font-size:17px;
-  background:linear-gradient(180deg,#c69d46 0%,#a67f30 42%,#8f6d28 58%,#b58f3c 100%);
-  border:4px solid #8a6a26;
-  box-shadow:inset 0 0 0 1px rgba(240,222,165,.4), 0 0 0 1px #3a2b0c, inset 0 -2px 5px rgba(55,36,6,.5), 0 2px 7px rgba(0,0,0,.5);
-  text-shadow:0 1px 0 rgba(255,236,185,.45);color:#1a1202}
+  background:linear-gradient(180deg,#f6c75e 0%,#e2a43f 30%,#b8742a 50%,#c5842f 62%,#eab24e 100%);
+  border:4px solid #d99a3a;
+  box-shadow:0 0 0 1px #4a2200, inset 0 0 0 1px #6a3004, inset 0 -2px 5px rgba(80,35,0,.45), 0 2px 7px rgba(0,0,0,.5);
+  text-shadow:0 1px 0 rgba(255,236,185,.45)}
 footer.bar{flex:none;height:44px;display:flex;align-items:center;justify-content:center;
   gap:18px;border-top:1px solid var(--line);background:var(--bg);font-size:14px}
 footer.bar a{color:var(--muted);text-decoration:none}
@@ -97,9 +97,9 @@ main.home .btns{margin-bottom:10px}
 main.home .rules{font-family:'Playfair Display', Georgia, serif;color:#8f8a7c;font-size:13px;line-height:1.6;margin:0 auto 10px;max-width:420px}
 .player-dock{position:fixed;left:0;right:0;bottom:0;z-index:5;height:96px;overflow:hidden;border-top:1px solid var(--line);background:#121216;transition:height .25s ease}
 .player-dock iframe{position:absolute;left:0;right:0;bottom:0;width:100%;height:100vh;height:100dvh;border:0}
-.player-dock .backbar{position:absolute;top:0;left:0;right:0;height:60px;z-index:3;display:none;cursor:pointer;border:0;border-bottom:4px solid #8a6a26;
-  font-family:'Playfair Display', Georgia, serif;font-weight:900;font-size:17px;letter-spacing:.08em;text-transform:uppercase;color:#1f1503;
-  background:linear-gradient(180deg,#e6c87e 0%,#cfa64c 45%,#b48a35 60%,#d9b45e 100%)}
+.player-dock .backbar{position:absolute;top:0;left:0;right:0;height:60px;z-index:3;display:none;cursor:pointer;border:0;border-bottom:4px solid #d99a3a;
+  font-family:'Playfair Display', Georgia, serif;font-weight:900;font-size:17px;letter-spacing:.08em;text-transform:uppercase;color:#2a1403;
+  background:linear-gradient(180deg,#f6c75e 0%,#e2a43f 30%,#b8742a 50%,#c5842f 62%,#eab24e 100%)}
 body.expanded .player-dock{height:100vh;height:100dvh}
 body.expanded .player-dock .backbar{display:block}
 body.expanded main.home{display:none}
@@ -118,9 +118,9 @@ body.expanded main.home{display:none}
 /* logo palette: gold + green headline, gold accents */
 h1 .r{color:#d8382c}
 h1 .g{color:#6ec07f}
-.btn.alt{color:#e8cc80;border:4px solid #8a6a26;text-shadow:none;
-  background:linear-gradient(180deg,rgba(140,105,40,.24),rgba(70,52,18,.16));
-  box-shadow:inset 0 0 0 1px rgba(240,222,165,.25), 0 0 0 1px #3a2b0c, 0 2px 5px rgba(0,0,0,.4)}
+.btn.alt{color:#f0c25a;border:4px solid #d99a3a;text-shadow:none;
+  background:linear-gradient(180deg,#1b150c,#0e0a05);
+  box-shadow:0 0 0 1px #4a2200, inset 0 0 0 1px #6a3004, 0 2px 5px rgba(0,0,0,.4)}
 
 body.expanded .player-dock .dockbar{display:none}
 
@@ -134,32 +134,48 @@ body.played:not(.expanded) .player-dock .reopen{display:block}
 .btn.big{letter-spacing:.07em}
 .statusbar{letter-spacing:.01em}
 /* house panel framed in brass like the header */
-.roofwrap{border:4px solid #8a6a26;
-  box-shadow:inset 0 0 0 2px rgba(240,217,143,.35), 0 0 0 1px #3a2b0c, inset 0 2px 14px rgba(0,0,0,.6), 0 2px 8px rgba(0,0,0,.5)}
+.roofwrap{border:4px solid #d99a3a;
+  box-shadow:0 0 0 1px #4a2200, inset 0 0 0 1px #6a3004, inset 0 2px 14px rgba(0,0,0,.6), 0 2px 8px rgba(0,0,0,.5)}
 
-/* the music bar as a brass radio tuner: knobs, a backlit dial window, a tick scale, a drifting needle */
-.player-dock{border-top:4px solid #8a6a26}
-.player-dock .dockbar{position:absolute;inset:0;z-index:3;border:0;cursor:pointer;display:flex;align-items:center;gap:10px;padding:8px 12px;
-  background:linear-gradient(180deg,#c69d46 0%,#a67f30 42%,#8f6d28 58%,#b58f3c 100%);
-  box-shadow:inset 0 0 0 1px rgba(240,222,165,.4), inset 0 -2px 5px rgba(55,36,6,.5)}
-.dockbar .knob{position:relative;flex:none;width:48px;height:48px;border-radius:50%;
-  background:radial-gradient(circle at 50% 50%,#d6b05c 0 30%,#7c5f22 31% 36%,transparent 37%),repeating-conic-gradient(#e2c072 0 5deg,#8f6d28 5deg 10deg);
-  box-shadow:0 0 0 2px #5a4214, 0 2px 6px rgba(0,0,0,.6), inset 0 0 0 1px rgba(255,236,185,.35)}
-.dockbar .knob::after{content:"";position:absolute;left:50%;top:7px;width:3px;height:11px;margin-left:-1.5px;background:#2a1d08;border-radius:2px}
-.dockbar .dial{position:relative;flex:1;height:100%;border-radius:8px;overflow:hidden;border:2px solid #6e5420;
-  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;padding-bottom:12px;
-  background:linear-gradient(180deg,#2a1e0b 0%,#140d04 100%);
-  box-shadow:inset 0 0 0 1px rgba(240,222,165,.18), inset 0 6px 14px rgba(0,0,0,.6)}
-.player-dock .dockbar:active .dial{background:linear-gradient(180deg,#3a2a10 0%,#1a1206 100%)}
-.dockbar .dial b{font-family:'Playfair Display',Georgia,serif;font-weight:900;font-size:21px;line-height:1;letter-spacing:.1em;color:#f0d98f;
-  text-shadow:0 0 10px rgba(240,180,60,.55), 0 1px 0 rgba(0,0,0,.6)}
-.dockbar .dial small{font-family:'Playfair Display',Georgia,serif;font-weight:700;font-size:11px;line-height:1;letter-spacing:.18em;color:#d9b45e;text-transform:uppercase}
-.dockbar .scale{position:absolute;left:10px;right:10px;bottom:4px;height:10px;opacity:.6;
-  background:repeating-linear-gradient(90deg,#e8c874 0 1px,transparent 1px 7px) left bottom/100% 5px no-repeat,
-             repeating-linear-gradient(90deg,#e8c874 0 1.5px,transparent 1.5px 35px) left bottom/100% 10px no-repeat;
-  -webkit-mask:linear-gradient(90deg,transparent,#000 10%,#000 90%,transparent);mask:linear-gradient(90deg,transparent,#000 10%,#000 90%,transparent)}
-.dockbar .needle{position:absolute;bottom:3px;height:20px;left:38%;width:2px;border-radius:1px;background:#e0372a;box-shadow:0 0 6px #e0372a;
+/* the music bar as a 1930s radio tuner in the header's bronze: spun knobs, a backlit gold dial with dark ticks, a drifting needle */
+.player-dock{border-top:4px solid #d99a3a;box-shadow:0 -1px 0 #4a2200, inset 0 1px 0 #6a3004;background:#0f0b06}
+.player-dock .dockbar{position:absolute;inset:0;z-index:3;border:0;cursor:pointer;display:flex;align-items:center;gap:12px;padding:8px 12px;
+  background:linear-gradient(180deg,#17110a,#0b0804)}
+.dockbar .knob{position:relative;flex:none;width:50px;height:50px;border-radius:50%;
+  background:radial-gradient(circle at 35% 30%,rgba(255,240,200,.5),rgba(255,240,200,0) 45%),
+             conic-gradient(from 20deg,#f1bd5e,#b9742a 12%,#f7cd78 24%,#a8661f 38%,#f3c268 50%,#b06b22 62%,#f9d07c 76%,#ad6a21 88%,#f1bd5e);
+  box-shadow:0 0 0 2px #5e2a00, 0 0 0 4px #c98a2e, 0 0 0 5px #3a1a00, 0 3px 8px rgba(0,0,0,.7)}
+.dockbar .knob::after{content:"";position:absolute;inset:7px;border-radius:50%;border:1px solid rgba(90,40,0,.4)}
+.dockbar .dial{position:relative;flex:1;height:100%;border-radius:14px;overflow:hidden;border:3px solid #d99a3a;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;padding-bottom:14px;
+  background:radial-gradient(ellipse 70% 120% at 50% 55%,#fff0a6 0%,#ffd96c 40%,#f6b840 75%,#d08a2c 100%);
+  box-shadow:0 0 0 1px #4a2200, inset 0 0 0 1px #6a3004, inset 0 0 22px rgba(120,60,0,.55)}
+.player-dock .dockbar:active .dial{filter:brightness(1.08)}
+.dockbar .dial b{font-family:'Playfair Display',Georgia,serif;font-weight:900;font-size:21px;line-height:1;letter-spacing:.1em;color:#3a1d05;text-shadow:0 1px 0 rgba(255,240,200,.5)}
+.dockbar .dial small{font-family:'Playfair Display',Georgia,serif;font-weight:700;font-size:11px;line-height:1;letter-spacing:.18em;color:#5b2d08;text-transform:uppercase}
+.dockbar .scale{position:absolute;left:12px;right:12px;bottom:4px;height:11px;opacity:.85;
+  background:repeating-linear-gradient(90deg,#3a1d05 0 1.5px,transparent 1.5px 8px) left bottom/100% 5px no-repeat,
+             repeating-linear-gradient(90deg,#3a1d05 0 2px,transparent 2px 40px) left bottom/100% 11px no-repeat;
+  -webkit-mask:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);mask:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
+.dockbar .needle{position:absolute;bottom:3px;height:22px;left:38%;width:2px;border-radius:1px;background:#d8382c;box-shadow:0 0 5px rgba(216,56,44,.8);
   animation:tune 9s ease-in-out infinite alternate}
 @keyframes tune{from{left:28%}to{left:68%}}
 @media (prefers-reduced-motion:reduce){.dockbar .needle{animation:none}}
 body.expanded .player-dock .dockbar{display:none}
+
+/* Andrew's generated 30s panel (site/tuner.webp, 3:1): once it loads it is the whole bar. Under `cover` the panel is
+   scaled to the viewport width (height 33.333vw) and cropped to the 96px bar about its middle, so a point at fraction f
+   of the panel's height sits at calc(48px + (f - .5) * 33.333vw). Glass: y .33-.66, x .166-.833; ticks from y .566. */
+.player-dock.panel .dockbar{padding:0;gap:0;background:#0b0804 url(tuner.webp?v=46) center/cover no-repeat}
+.player-dock.panel .dockbar .knob,.player-dock.panel .dockbar .scale{display:none}
+.player-dock.panel .dockbar .dial{position:absolute;left:16.6%;right:16.7%;top:max(0px,calc(48px - 5.667vw));bottom:max(0px,calc(48px - 5.333vw));height:auto;z-index:2;
+  border:0;border-radius:0;background:none;box-shadow:none;flex-direction:row;align-items:center;justify-content:center;gap:0;padding:0 0 3.133vw;overflow:visible}
+.player-dock.panel .dockbar:active .dial{filter:none}
+.player-dock.panel .dockbar .dial b,.player-dock.panel .dockbar .dial small{flex:1 1 0;position:relative;z-index:1;text-shadow:0 0 10px rgba(255,190,80,.55), 0 1px 0 rgba(0,0,0,.7)}
+.player-dock.panel .dockbar .dial b{text-align:right;padding-right:16px;font-size:19px;color:#f3d383}
+.player-dock.panel .dockbar .dial small{text-align:left;padding-left:16px;color:#e8c070}
+.player-dock.panel .dockbar .needle{display:block;position:absolute;z-index:-1;top:0;bottom:0;height:auto;
+  left:50%;width:2px;background:#e0302a;box-shadow:0 0 6px rgba(224,48,42,.9), 0 0 2px #ff6a5a;animation:tune2 11s ease-in-out infinite alternate}
+.player-dock.panel .dockbar .needle::after{content:"";position:absolute;left:-5px;right:-5px;bottom:-2px;height:10px;border-radius:50%;background:rgba(255,110,60,.55);filter:blur(3px)}
+@keyframes tune2{from{left:23%}to{left:77%}}
+@media (prefers-reduced-motion:reduce){.player-dock.panel .dockbar .needle{animation:none}}
