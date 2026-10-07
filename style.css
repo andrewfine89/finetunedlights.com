@@ -128,15 +128,15 @@ body.expanded main.home{display:none}
 .statusbar{display:flex;align-items:center;justify-content:center;gap:9px}
 .statusbar .lamp{flex:none;width:9px;height:9px;margin-top:0;border-radius:50%;
   background:radial-gradient(circle at 35% 35%,#ffe9a8,#e8ad3e 45%,#8a5a10);
-  box-shadow:0 0 6px 1px rgba(232,173,62,.75), inset 0 0 2px rgba(0,0,0,.6);animation:flash 1.4s ease-in-out infinite}
-.statusbar .lamp:last-child{animation-delay:-.7s}   /* the two lamps alternate, marquee style */
+  box-shadow:0 0 6px 1px rgba(232,173,62,.75), inset 0 0 2px rgba(0,0,0,.6);animation:flash 4s ease-in-out infinite}
+.statusbar .lamp:last-child{animation-delay:-2s}   /* the two lamps alternate, marquee style */
 .statusbar.on .lamp{background:radial-gradient(circle at 35% 35%,#d8ffe0,#6ec07f 45%,#1f6b33);box-shadow:0 0 7px 1px rgba(110,192,127,.8), inset 0 0 2px rgba(0,0,0,.6)}
-@keyframes flash{0%,100%{filter:brightness(1.15)}50%{filter:brightness(.3)}}
+@keyframes flash{0%,100%{filter:brightness(1.1)}50%{filter:brightness(.5)}}
 .statusbar #status-text{background:linear-gradient(100deg,var(--gold) 0 40%,#fff3c4 50%,var(--gold) 60% 100%) no-repeat;background-size:300% 100%;background-position:100% 0;
-  -webkit-background-clip:text;background-clip:text;color:transparent;animation:glint 6s ease-in-out infinite}
+  -webkit-background-clip:text;background-clip:text;color:transparent;animation:glint 9s ease-in-out infinite}
 .statusbar #status-text b{color:inherit;background:none}
 .statusbar.on #status-text{background-image:linear-gradient(100deg,#6ec07f 0 40%,#e6ffe9 50%,#6ec07f 60% 100%)}
-@keyframes glint{0%,55%{background-position:100% 0}100%{background-position:0% 0}}
+@keyframes glint{0%,70%{background-position:100% 0}100%{background-position:0% 0}}
 @media (prefers-reduced-motion:reduce){.statusbar .lamp,.statusbar #status-text{animation:none}}
 
 /* logo palette: gold + green headline, gold accents */
@@ -183,7 +183,7 @@ body.played:not(.expanded) .player-dock .reopen{display:block}
              repeating-linear-gradient(90deg,#3a1d05 0 2px,transparent 2px 40px) left bottom/100% 11px no-repeat;
   -webkit-mask:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);mask:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
 .dockbar .needle{position:absolute;bottom:3px;height:22px;left:38%;width:2px;border-radius:1px;background:#d8382c;box-shadow:0 0 5px rgba(216,56,44,.8);
-  animation:tune 9s ease-in-out infinite alternate}
+  animation:tune 15s ease-in-out infinite alternate}
 @keyframes tune{from{left:28%}to{left:68%}}
 @media (prefers-reduced-motion:reduce){.dockbar .needle{animation:none}}
 body.expanded .player-dock .dockbar{display:none}
@@ -205,7 +205,7 @@ body.played:not(.expanded) .player-dock iframe{bottom:-18px}
   font-size:clamp(11px, 3.4vw, 14px);line-height:1;letter-spacing:.14em;text-transform:uppercase;color:#f3d383;text-shadow:0 0 10px rgba(255,190,80,.55), 0 1px 0 rgba(0,0,0,.7)}
 .player-dock.panel .dockbar .dial small::before{content:"\00B7";margin:0 .55em;color:#e8c070}
 .player-dock.panel .dockbar .needle{display:block;position:absolute;z-index:-1;top:0;bottom:0;height:auto;
-  left:50%;width:2px;background:#e0302a;box-shadow:0 0 6px rgba(224,48,42,.9), 0 0 2px #ff6a5a;animation:tune2 11s ease-in-out infinite alternate}
+  left:50%;width:2px;background:#e0302a;box-shadow:0 0 6px rgba(224,48,42,.9), 0 0 2px #ff6a5a;animation:tune2 18s ease-in-out infinite alternate}
 .player-dock.panel .dockbar .needle::after{content:"";position:absolute;left:-5px;right:-5px;bottom:-2px;height:10px;border-radius:50%;background:rgba(255,110,60,.55);filter:blur(3px)}
 @keyframes tune2{from{left:20%}to{left:79%}}
 @media (prefers-reduced-motion:reduce){.player-dock.panel .dockbar .needle{animation:none}}
