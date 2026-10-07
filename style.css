@@ -17,7 +17,7 @@ header.top{flex:none;display:flex;align-items:center;justify-content:space-betwe
 .status{font-size:14px;color:var(--muted);text-align:right}
 .status b{color:var(--gold);font-weight:600}
 .status.on b{color:#7ee0a0}
-body.app{height:100vh;height:100dvh;display:flex;flex-direction:column;overflow:hidden}
+body.app{min-height:100vh;min-height:100dvh}
 main.player{position:relative;flex:1;min-height:0;background:#000}
 main.player iframe{width:100%;height:100%;border:0;display:block}
 .fallback{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;
@@ -82,8 +82,8 @@ ul{padding-left:20px}
 
 
 /* home page with the player docked at the bottom */
-body.dock{overflow:hidden}
-main.home{flex:1;min-height:0;overflow:auto;padding:0 16px 16px;text-align:center;max-width:560px;width:100%;margin:0 auto}
+body.dock{padding-bottom:104px}
+main.home{padding:0 16px 24px;text-align:center;max-width:560px;width:100%;margin:0 auto}
 main.home .house{display:block;width:100%;border-radius:14px;margin:6px 0 14px}
 main.home h1{font-size:28px;line-height:1.12;margin:0 0 8px}
 main.home .line{color:var(--muted);margin:0 0 16px}
@@ -91,11 +91,11 @@ main.home .line b{color:var(--gold)}
 main.home .line a{color:var(--muted)}
 main.home .btns{margin-bottom:12px}
 main.home .rules{color:var(--muted);font-size:14px;margin:0}
-.player-dock{flex:none;position:relative;height:96px;overflow:hidden;border-top:1px solid var(--line);background:#121216;transition:height .25s ease}
+.player-dock{position:fixed;left:0;right:0;bottom:0;z-index:5;height:96px;overflow:hidden;border-top:1px solid var(--line);background:#121216;transition:height .25s ease}
 .player-dock iframe{position:absolute;left:0;right:0;bottom:0;width:100%;height:100vh;height:100dvh;border:0}
 .player-dock .grab{position:absolute;top:0;left:0;right:0;height:14px;border:0;background:transparent;z-index:2;display:none;cursor:pointer}
 .player-dock .grab span{display:block;width:40px;height:4px;border-radius:2px;background:#444;margin:5px auto 0}
-body.expanded .player-dock{height:calc(100vh - 110px);height:calc(100dvh - 110px)}
+body.expanded .player-dock{height:100vh;height:100dvh}
 body.expanded .player-dock .grab{display:block}
 body.expanded main.home{display:none}
 
