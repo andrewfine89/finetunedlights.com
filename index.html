@@ -11,15 +11,15 @@
 <meta property="og:image" content="https://finetunedlights.com/display-photo.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;0,900;1,500&family=Josefin+Sans:wght@600;700&family=Roboto:wght@400;500;700&display=swap">
-<link rel="stylesheet" href="style.css?v=48">
+<link rel="stylesheet" href="style.css?v=49">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
-<script src="show.js?v=48" defer></script>
-<script src="holiday.js?v=48" defer></script>
-<script src="roof-player.js?v=48" defer></script>
+<script src="show.js?v=49" defer></script>
+<script src="holiday.js?v=49" defer></script>
+<script src="roof-player.js?v=49" defer></script>
 </head>
 <body class="app dock">
 <main class="home">
-  <div class="masthead"><img id="banner" src="banner.webp?v=48" alt="Fine Tuned Lights"></div>
+  <div class="masthead"><img id="banner" src="banner.webp?v=49" alt="Fine Tuned Lights"></div>
 <script>
   // Halloween header Oct 1 - Nov 1 (show's time zone); Christmas header the rest of the year.
   (function () {
@@ -27,16 +27,16 @@
     var o = {}; f.formatToParts(new Date()).forEach(function (p) { o[p.type] = p.value; });
     var m = +o.month, d = +o.day;
     window.__halloween = (m === 10 || (m === 11 && d === 1));
-    if (window.__halloween) document.getElementById('banner').src = 'banner-halloween.webp?v=48';
+    if (window.__halloween) document.getElementById('banner').src = 'banner-halloween.webp?v=49';
   })();
 </script>
-  <div class="statusbar" id="status">Sunset to 10 pm, midnight on weekends</div>
+  <div class="statusbar" id="status"><i class="lamp" aria-hidden="true"></i><span id="status-text">Sunset to 10 pm, midnight on weekends</span></div>
   <div class="btns">
     <a class="btn big" href="#" id="expand">Vote for the next song</a>
   </div>
   <div class="roofwrap"><canvas id="roof"></canvas></div>
   <div class="btns below">
-    <a class="btn big" href="about.html">About the show</a>
+    <a class="btn big alt" href="about.html">About the show</a>
   </div>
   <p class="line dates"><span id="season-h"><b>Halloween &middot; October 24 to 31</b><br></span><b>Christmas &middot; <span id="season">November 27 to January 1</span></b></p>
   <p class="line hrs">Sunset to 10 pm,<br>midnight on weekends and holidays</p>
@@ -76,7 +76,7 @@
   document.getElementById('reopen').addEventListener('click', open);
   backEl.addEventListener('click', collapse);
   // the generated tuner panel takes over the bar once it has loaded (CSS tuner until then, or if it is missing)
-  var panel = new Image(); panel.onload = function () { document.getElementById('dock').classList.add('panel'); }; panel.src = 'tuner.webp?v=48';
+  var panel = new Image(); panel.onload = function () { document.getElementById('dock').classList.add('panel'); }; panel.src = 'tuner.webp?v=49';
   var loaded = false; document.getElementById('player').addEventListener('load', function () { loaded = true; });
   setTimeout(function () { if (!loaded) { var a = document.getElementById('expand'); a.textContent = 'Open the player to vote'; a.href = 'https://psm.sh/MZVS'; a.onclick = null; dock.style.display = 'none'; } }, 10000);
 
@@ -87,7 +87,7 @@
   window.addEventListener('DOMContentLoaded', async function () {
     try {
       var show = await Roofline.loadShow('like-its-christmas');
-      var r = Roofline.makeRenderer(document.getElementById('roof'), show, { background: (window.__halloween ? 'house-night-halloween.jpg' : 'house-night.jpg') + '?v=48' });
+      var r = Roofline.makeRenderer(document.getElementById('roof'), show, { background: (window.__halloween ? 'house-night-halloween.jpg' : 'house-night.jpg') + '?v=49' });
       var t0 = performance.now();
       r.start(function () {
         return window.__pmPositionMs ? window.__pmPositionMs() : (performance.now() - t0) % r.durationMs;

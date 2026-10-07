@@ -95,8 +95,9 @@ document.addEventListener('DOMContentLoaded', () => {
   }
   const hallEl = document.getElementById('season-h');   // the Halloween line only while that show is on the calendar
   if (hallEl && !HALLOWEEN) hallEl.style.display = 'none';
-  const el = document.getElementById('status');
-  if (!el) return;
-  const paint = () => { const s = showStatus(); el.innerHTML = s.text; el.classList.toggle('on', s.on); };
+  const bar = document.getElementById('status');
+  if (!bar) return;
+  const el = document.getElementById('status-text') || bar;   // the text sits beside a pilot lamp on the landing page
+  const paint = () => { const s = showStatus(); el.innerHTML = s.text; bar.classList.toggle('on', s.on); };
   paint(); setInterval(paint, 30000);
 });
