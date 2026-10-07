@@ -86,7 +86,7 @@ ul{padding-left:20px}
 
 
 /* home page with the player docked at the bottom */
-body.dock{padding-bottom:104px}
+body.dock{padding-bottom:calc(min((100vw - 24px) / 4.202, 120px) + 24px)}
 main.home{padding:0 12px 14px;text-align:center;max-width:560px;width:100%;margin:0 auto}
 main.home .house{display:block;width:100%;border-radius:14px;margin:6px 0 14px}
 main.home h1{font-size:22px;line-height:1.14;margin:4px 0 6px}
@@ -95,13 +95,16 @@ main.home .line b{color:var(--gold)}
 main.home .line a{color:var(--muted)}
 main.home .btns{margin-bottom:10px}
 main.home .rules{font-family:'Playfair Display', Georgia, serif;color:#8f8a7c;font-size:13px;line-height:1.6;margin:0 auto 10px;max-width:420px}
-.player-dock{position:fixed;left:0;right:0;bottom:0;z-index:5;height:96px;overflow:hidden;border-top:1px solid var(--line);background:#121216;transition:height .25s ease}
+.player-dock{position:fixed;left:12px;right:12px;bottom:10px;z-index:5;height:96px;overflow:hidden;border-radius:12px;background:#0f0b06}
 .player-dock iframe{position:absolute;left:0;right:0;bottom:0;width:100%;height:100vh;height:100dvh;border:0}
 .player-dock .backbar{position:absolute;top:0;left:0;right:0;height:60px;z-index:3;display:none;cursor:pointer;border:0;border-bottom:4px solid #d99a3a;
   font-family:'Playfair Display', Georgia, serif;font-weight:900;font-size:17px;letter-spacing:.08em;text-transform:uppercase;color:#2a1403;
   background:linear-gradient(180deg,#f6c75e 0%,#e2a43f 30%,#b8742a 50%,#c5842f 62%,#eab24e 100%)}
-body.expanded .player-dock{height:100vh;height:100dvh}
+body.expanded .player-dock{left:0;right:0;bottom:0;height:100vh;height:100dvh;border:0;border-radius:0}
 body.expanded .player-dock .backbar{display:block}
+/* leftward chevron on the Back bar, drawn (no glyph) */
+.player-dock .backbar::before{content:"";display:inline-block;width:11px;height:11px;border-left:3px solid currentColor;border-bottom:3px solid currentColor;
+  transform:rotate(45deg);margin:0 14px 0 0;vertical-align:middle;position:relative;top:-2px}
 body.expanded main.home{display:none}
 
 /* live roofline hero on the landing page */
@@ -138,7 +141,7 @@ body.played:not(.expanded) .player-dock .reopen{display:block}
   box-shadow:0 0 0 1px #4a2200, inset 0 0 0 1px #6a3004, inset 0 2px 14px rgba(0,0,0,.6), 0 2px 8px rgba(0,0,0,.5)}
 
 /* the music bar as a 1930s radio tuner in the header's bronze: spun knobs, a backlit gold dial with dark ticks, a drifting needle */
-.player-dock{border-top:4px solid #d99a3a;box-shadow:0 -1px 0 #4a2200, inset 0 1px 0 #6a3004;background:#0f0b06}
+.player-dock{border:4px solid #d99a3a;box-shadow:0 0 0 1px #4a2200, inset 0 0 0 1px #6a3004, 0 2px 8px rgba(0,0,0,.5);background:#0f0b06}
 .player-dock .dockbar{position:absolute;inset:0;z-index:3;border:0;cursor:pointer;display:flex;align-items:center;gap:12px;padding:8px 12px;
   background:linear-gradient(180deg,#17110a,#0b0804)}
 .dockbar .knob{position:relative;flex:none;width:50px;height:50px;border-radius:50%;
@@ -163,19 +166,24 @@ body.played:not(.expanded) .player-dock .reopen{display:block}
 @media (prefers-reduced-motion:reduce){.dockbar .needle{animation:none}}
 body.expanded .player-dock .dockbar{display:none}
 
-/* Andrew's generated 30s panel (site/tuner.webp, 3:1): once it loads it is the whole bar. Under `cover` the panel is
-   scaled to the viewport width (height 33.333vw) and cropped to the 96px bar about its middle, so a point at fraction f
-   of the panel's height sits at calc(48px + (f - .5) * 33.333vw). Glass: y .33-.66, x .166-.833; ticks from y .566. */
-.player-dock.panel .dockbar{padding:0;gap:0;background:#0b0804 url(tuner.webp?v=46) center/cover no-repeat}
+/* Andrew's generated 1930s panel (site/tuner.webp, cropped to its frame, 2000x476 = 4.202:1): once it loads it is the whole bar.
+   The bar is inset 12px like the other blocks and takes the panel's own height (capped at 120px, where `cover` crops the
+   panel about its middle). A point at fraction f of the panel's height sits at calc(hd/2 + (f - .5) * h), h the panel's
+   scaled height and hd the bar's. Glass: y .25-.72, x .157-.84; ticks from y .60 (read off a grid overlay). */
+.player-dock.panel{--h:calc((100vw - 24px) / 4.202);--hd:min(var(--h), 120px);height:var(--hd);border:0;box-shadow:0 2px 8px rgba(0,0,0,.5);background:#000}
+body.played:not(.expanded) .player-dock{height:96px;border:4px solid #d99a3a;box-shadow:0 0 0 1px #4a2200, inset 0 0 0 1px #6a3004, 0 2px 8px rgba(0,0,0,.5);background:#0f0b06}
+/* PulseMesh's now-playing bar sits high in the bottom 96px of its page; nudge the frame down so the bar is centred in our box */
+body.played:not(.expanded) .player-dock iframe{bottom:-18px}
+.player-dock.panel .dockbar{padding:0;gap:0;background:#000 url(tuner.webp?v=47) center/cover no-repeat}
 .player-dock.panel .dockbar .knob,.player-dock.panel .dockbar .scale{display:none}
-.player-dock.panel .dockbar .dial{position:absolute;left:16.6%;right:16.7%;top:max(0px,calc(48px - 5.667vw));bottom:max(0px,calc(48px - 5.333vw));height:auto;z-index:2;
-  border:0;border-radius:0;background:none;box-shadow:none;flex-direction:row;align-items:center;justify-content:center;gap:0;padding:0 0 3.133vw;overflow:visible}
+.player-dock.panel .dockbar .dial{position:absolute;left:15.7%;right:16%;top:max(0px,calc(var(--hd) / 2 - .25 * var(--h)));bottom:max(0px,calc(var(--hd) / 2 - .22 * var(--h)));height:auto;z-index:2;
+  border:0;border-radius:0;background:none;box-shadow:none;flex-direction:row;align-items:center;justify-content:center;gap:0;padding:0 0 calc(.12 * var(--h));overflow:visible}
 .player-dock.panel .dockbar:active .dial{filter:none}
-.player-dock.panel .dockbar .dial b,.player-dock.panel .dockbar .dial small{flex:1 1 0;position:relative;z-index:1;text-shadow:0 0 10px rgba(255,190,80,.55), 0 1px 0 rgba(0,0,0,.7)}
-.player-dock.panel .dockbar .dial b{text-align:right;padding-right:16px;font-size:19px;color:#f3d383}
-.player-dock.panel .dockbar .dial small{text-align:left;padding-left:16px;color:#e8c070}
+.player-dock.panel .dockbar .dial b,.player-dock.panel .dockbar .dial small{flex:none;position:relative;z-index:1;font-family:'Josefin Sans',Futura,'Trebuchet MS',sans-serif;font-weight:700;
+  font-size:clamp(11px, 3.4vw, 14px);line-height:1;letter-spacing:.14em;text-transform:uppercase;color:#f3d383;text-shadow:0 0 10px rgba(255,190,80,.55), 0 1px 0 rgba(0,0,0,.7)}
+.player-dock.panel .dockbar .dial small::before{content:"\00B7";margin:0 .55em;color:#e8c070}
 .player-dock.panel .dockbar .needle{display:block;position:absolute;z-index:-1;top:0;bottom:0;height:auto;
   left:50%;width:2px;background:#e0302a;box-shadow:0 0 6px rgba(224,48,42,.9), 0 0 2px #ff6a5a;animation:tune2 11s ease-in-out infinite alternate}
 .player-dock.panel .dockbar .needle::after{content:"";position:absolute;left:-5px;right:-5px;bottom:-2px;height:10px;border-radius:50%;background:rgba(255,110,60,.55);filter:blur(3px)}
-@keyframes tune2{from{left:23%}to{left:77%}}
+@keyframes tune2{from{left:20%}to{left:79%}}
 @media (prefers-reduced-motion:reduce){.player-dock.panel .dockbar .needle{animation:none}}
