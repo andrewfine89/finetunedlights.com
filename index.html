@@ -11,15 +11,15 @@
 <meta property="og:image" content="https://finetunedlights.com/display-photo.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;900&family=Roboto:wght@400;500;700&display=swap">
-<link rel="stylesheet" href="style.css?v=42">
+<link rel="stylesheet" href="style.css?v=44">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
-<script src="show.js?v=42" defer></script>
-<script src="holiday.js?v=42" defer></script>
-<script src="roof-player.js?v=42" defer></script>
+<script src="show.js?v=44" defer></script>
+<script src="holiday.js?v=44" defer></script>
+<script src="roof-player.js?v=44" defer></script>
 </head>
 <body class="app dock">
 <main class="home">
-  <div class="masthead"><img id="banner" src="banner.webp?v=42" alt="Fine Tuned Lights"></div>
+  <div class="masthead"><img id="banner" src="banner.webp?v=44" alt="Fine Tuned Lights"></div>
 <script>
   // Halloween header Oct 1 - Nov 1 (show's time zone); Christmas header the rest of the year.
   (function () {
@@ -27,7 +27,7 @@
     var o = {}; f.formatToParts(new Date()).forEach(function (p) { o[p.type] = p.value; });
     var m = +o.month, d = +o.day;
     window.__halloween = (m === 10 || (m === 11 && d === 1));
-    if (window.__halloween) document.getElementById('banner').src = 'banner-halloween.webp?v=42';
+    if (window.__halloween) document.getElementById('banner').src = 'banner-halloween.webp?v=44';
   })();
 </script>
   <div class="statusbar" id="status">Sunset to 10 pm, midnight on weekends</div>
@@ -41,20 +41,22 @@
 </main>
 
 <section class="player-dock" id="dock">
-  <button class="grab" id="collapse" aria-label="Collapse player"><span></span></button>
+  <button class="backbar" id="collapse">Back to Fine Tuned Lights</button>
   <button class="dockbar" id="dockopen">Tune in &middot; tap to listen</button>
   <button class="reopen" id="reopen" aria-label="Open player"></button>
   <iframe id="player" src="https://player.pulsemesh.io/d/MZVS" title="Listen to the show" allow="autoplay; geolocation; microphone"></iframe>
 </section>
 
 <script>
-  var body = document.body, dock = document.getElementById('dock'), autoCollapse = 0;
-  function openStay() { clearTimeout(autoCollapse); body.classList.add('expanded', 'played'); }
-  function openListen() { body.classList.add('expanded', 'played'); clearTimeout(autoCollapse); autoCollapse = setTimeout(function () { body.classList.remove('expanded'); }, 6500); }
-  document.getElementById('expand').addEventListener('click', function (e) { e.preventDefault(); openStay(); });
-  document.getElementById('dockopen').addEventListener('click', openListen);
-  document.getElementById('reopen').addEventListener('click', openStay);
-  document.getElementById('collapse').addEventListener('click', function () { clearTimeout(autoCollapse); body.classList.remove('expanded'); });
+  // Player: one way in, one way out. Any of the three taps opens it full screen;
+  // only the big Back bar closes it. No timers, nothing moves on its own.
+  var body = document.body;
+  function open() { body.classList.add('expanded', 'played'); }
+  function collapse() { body.classList.remove('expanded'); }
+  document.getElementById('expand').addEventListener('click', function (e) { e.preventDefault(); open(); });
+  document.getElementById('dockopen').addEventListener('click', open);
+  document.getElementById('reopen').addEventListener('click', open);
+  document.getElementById('collapse').addEventListener('click', collapse);
   var loaded = false; document.getElementById('player').addEventListener('load', function () { loaded = true; });
   setTimeout(function () { if (!loaded) { var a = document.getElementById('expand'); a.textContent = 'Open the player to vote'; a.href = 'https://psm.sh/MZVS'; a.onclick = null; dock.style.display = 'none'; } }, 10000);
 
@@ -65,7 +67,7 @@
   window.addEventListener('DOMContentLoaded', async function () {
     try {
       var show = await Roofline.loadShow('like-its-christmas');
-      var r = Roofline.makeRenderer(document.getElementById('roof'), show, { background: (window.__halloween ? 'house-night-halloween.jpg' : 'house-night.jpg') + '?v=42' });
+      var r = Roofline.makeRenderer(document.getElementById('roof'), show, { background: (window.__halloween ? 'house-night-halloween.jpg' : 'house-night.jpg') + '?v=44' });
       var t0 = performance.now();
       r.start(function () {
         return window.__pmPositionMs ? window.__pmPositionMs() : (performance.now() - t0) % r.durationMs;
