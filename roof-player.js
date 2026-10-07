@@ -43,8 +43,8 @@
       if (!gd) {
         const R = 10;
         gd = lc.createRadialGradient(0, 0, 0, 0, 0, R);
-        gd.addColorStop(0, `rgba(${r},${g},${b},0.42)`);
-        gd.addColorStop(0.35, `rgba(${r},${g},${b},0.12)`);
+        gd.addColorStop(0, `rgba(${r},${g},${b},0.34)`);
+        gd.addColorStop(0.35, `rgba(${r},${g},${b},0.09)`);
         gd.addColorStop(1, `rgba(${r},${g},${b},0)`);
         gradCache.set(key, gd);
       }
@@ -110,11 +110,11 @@
         if (r + g + b < 24) continue;
         const x = ox + nodes[i][0] * scale, y = oy + nodes[i][1] * scale;
         lc.fillStyle = `rgb(${r},${g},${b})`;
-        lc.globalAlpha = 0.7; lc.beginPath(); lc.arc(x, y, 1.4 * dpr, 0, 6.2832); lc.fill(); lc.globalAlpha = 1;
+        lc.globalAlpha = 0.6; lc.beginPath(); lc.arc(x, y, 1.3 * dpr, 0, 6.2832); lc.fill(); lc.globalAlpha = 1;
       }
       ctx.globalCompositeOperation = 'lighter';
-      ctx.filter = 'blur(' + (2.4 * dpr) + 'px)';
-      ctx.globalAlpha = 0.82;
+      ctx.filter = 'blur(' + (2.8 * dpr) + 'px)';
+      ctx.globalAlpha = 0.75;
       ctx.drawImage(lit, 0, 0);
       ctx.globalAlpha = 1;
       ctx.filter = 'none';
