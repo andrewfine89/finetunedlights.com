@@ -97,6 +97,7 @@ main.home .addr{margin-top:7px}
 main.home .line b{color:var(--gold);text-transform:uppercase;letter-spacing:.06em;font-weight:700}
 main.home .line a{color:#e6d6b4;text-decoration-color:rgba(232,173,62,.75);text-decoration-thickness:1px;text-underline-offset:3px}
 main.home .btns{margin-bottom:10px}
+main.home .btns.below{margin:10px 0 0}   /* About sits under the house; the dates' own 5px top margin makes the 10px ink gap */
 main.home .rules{font-family:'Playfair Display', Georgia, serif;font-style:italic;font-weight:500;color:#c4ab7a;font-size:13.5px;line-height:1.5;margin:0 auto 5px;max-width:400px}
 /* a short gold rule sets the visitor note apart from the facts above it */
 main.home .rules::before{content:"";display:block;width:56px;height:1px;margin:10px auto 8px;background:linear-gradient(90deg,transparent,#d99a3a 30%,#d99a3a 70%,transparent)}
