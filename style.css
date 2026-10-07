@@ -163,11 +163,12 @@ body.played:not(.expanded) .player-dock .reopen{display:block}
   box-shadow:0 0 0 1px #553e16, inset 0 0 0 1px #7c4a1b, inset 0 2px 14px rgba(0,0,0,.6), 0 2px 8px rgba(0,0,0,.5)}
 
 /* The Tune In bar is Andrew's generated 1930s brass panel (site/tuner.webp, cropped to its frame, 2000x476 = 4.202:1).
-   The bar is inset like the other blocks and takes the panel's own height (capped at 120px, where `cover` crops the
-   panel about its middle). A point at fraction f of the panel's height sits at calc(hd/2 + (f - .5) * h), h the
-   panel's scaled height and hd the bar's. Glass: y .25-.72, x .157-.84; ticks from y .60 (read off a grid overlay).
+   The bar is inset like the other blocks, at most the column's 536px wide, and exactly the panel's own height at
+   that width (128px at most), so `cover` never crops it (an earlier 120px cap shaved the rounded edges on desktop).
+   A point at fraction f of the panel's height sits at calc(hd/2 + (f - .5) * h), h the panel's scaled height and
+   hd the bar's (equal now, kept separate in case a cap ever returns). Glass: y .25-.72, x .157-.84; ticks from y .60 (read off a grid overlay).
    Until the image arrives the bar is plain dark with the lettering; the old CSS-drawn tuner is gone. */
-.player-dock{--h:calc(min(100vw - 24px, 536px) / 4.202);--hd:min(var(--h), 120px);height:var(--hd);border:0;box-shadow:0 2px 8px rgba(0,0,0,.5);background:#000}
+.player-dock{--h:calc(min(100vw - 24px, 536px) / 4.202);--hd:var(--h);height:var(--hd);border:0;box-shadow:0 2px 8px rgba(0,0,0,.5);background:#000}
 .player-dock .dockbar{position:absolute;inset:0;z-index:3;border:0;cursor:pointer;padding:0;background:#000 url(tuner.webp?v=49) center/cover no-repeat}
 .player-dock .dockbar .dial{position:absolute;left:15.7%;right:16%;top:max(0px,calc(var(--hd) / 2 - .25 * var(--h)));bottom:max(0px,calc(var(--hd) / 2 - .22 * var(--h)));z-index:2;
   display:flex;flex-direction:row;align-items:center;justify-content:center;gap:0;padding:0 0 calc(.09 * var(--h))}
