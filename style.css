@@ -102,12 +102,12 @@ main.home .rules{font-family:'Playfair Display', Georgia, serif;font-style:itali
 /* a short gold rule sets the visitor note apart from the facts above it */
 main.home .rules::before{content:"";display:block;width:56px;height:1px;margin:10px auto 8px;background:linear-gradient(90deg,transparent,#d99a3a 30%,#d99a3a 70%,transparent)}
 /* in flow and sticky: sits 10px under the note when the page fits the screen, sticks to the bottom edge when it does not */
-.player-dock{position:sticky;bottom:10px;margin:0 12px 10px;z-index:5;height:96px;overflow:hidden;border-radius:12px;background:#0f0b06}
+.player-dock{position:sticky;bottom:10px;width:calc(100% - 24px);max-width:536px;margin:0 auto 10px;z-index:5;height:96px;overflow:hidden;border-radius:12px;background:#0f0b06}   /* same width as the 560px column (12px padding each side) on every screen */
 .player-dock iframe{position:absolute;left:0;right:0;bottom:0;width:100%;height:100vh;height:100dvh;border:0}
 .player-dock .backbar{position:absolute;top:0;left:0;right:0;height:60px;z-index:3;display:none;cursor:pointer;border:0;border-bottom:4px solid #d99a3a;
   font-weight:700;font-size:16px;letter-spacing:.12em;text-transform:uppercase;color:#2a1403;-webkit-text-stroke:.6px currentColor;
   background:linear-gradient(180deg,#f6c75e 0%,#e2a43f 30%,#b8742a 50%,#c5842f 62%,#eab24e 100%)}
-body.expanded .player-dock{position:fixed;left:0;right:0;bottom:0;margin:0;height:100vh;height:100dvh;border:0;border-radius:0}
+body.expanded .player-dock{position:fixed;left:0;right:0;bottom:0;margin:0;width:auto;max-width:none;height:100vh;height:100dvh;border:0;border-radius:0}
 body.expanded .player-dock .backbar{display:block}
 /* leftward chevron on the Back bar, drawn (no glyph) */
 .player-dock .backbar::before{content:"";display:inline-block;width:11px;height:11px;border-left:3px solid currentColor;border-bottom:3px solid currentColor;
@@ -178,7 +178,7 @@ body.expanded .player-dock .dockbar{display:none}
    The bar is inset 12px like the other blocks and takes the panel's own height (capped at 120px, where `cover` crops the
    panel about its middle). A point at fraction f of the panel's height sits at calc(hd/2 + (f - .5) * h), h the panel's
    scaled height and hd the bar's. Glass: y .25-.72, x .157-.84; ticks from y .60 (read off a grid overlay). */
-.player-dock.panel{--h:calc((100vw - 24px) / 4.202);--hd:min(var(--h), 120px);height:var(--hd);border:0;box-shadow:0 2px 8px rgba(0,0,0,.5);background:#000}
+.player-dock.panel{--h:calc(min(100vw - 24px, 536px) / 4.202);--hd:min(var(--h), 120px);height:var(--hd);border:0;box-shadow:0 2px 8px rgba(0,0,0,.5);background:#000}
 body.played:not(.expanded) .player-dock{height:96px;border:4px solid #d99a3a;box-shadow:0 0 0 1px #4a2200, inset 0 0 0 1px #6a3004, 0 2px 8px rgba(0,0,0,.5);background:#0f0b06}
 /* PulseMesh's now-playing bar sits high in the bottom 96px of its page; nudge the frame down so the bar is centred in our box */
 body.played:not(.expanded) .player-dock iframe{bottom:-18px}
