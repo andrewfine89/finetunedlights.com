@@ -11,15 +11,15 @@
 <meta property="og:image" content="https://finetunedlights.com/display-photo.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;900&family=Roboto:wght@400;500;700&display=swap">
-<link rel="stylesheet" href="style.css?v=45">
+<link rel="stylesheet" href="style.css?v=46">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
-<script src="show.js?v=45" defer></script>
-<script src="holiday.js?v=45" defer></script>
-<script src="roof-player.js?v=45" defer></script>
+<script src="show.js?v=46" defer></script>
+<script src="holiday.js?v=46" defer></script>
+<script src="roof-player.js?v=46" defer></script>
 </head>
 <body class="app dock">
 <main class="home">
-  <div class="masthead"><img id="banner" src="banner.webp?v=45" alt="Fine Tuned Lights"></div>
+  <div class="masthead"><img id="banner" src="banner.webp?v=46" alt="Fine Tuned Lights"></div>
 <script>
   // Halloween header Oct 1 - Nov 1 (show's time zone); Christmas header the rest of the year.
   (function () {
@@ -27,7 +27,7 @@
     var o = {}; f.formatToParts(new Date()).forEach(function (p) { o[p.type] = p.value; });
     var m = +o.month, d = +o.day;
     window.__halloween = (m === 10 || (m === 11 && d === 1));
-    if (window.__halloween) document.getElementById('banner').src = 'banner-halloween.webp?v=45';
+    if (window.__halloween) document.getElementById('banner').src = 'banner-halloween.webp?v=46';
   })();
 </script>
   <div class="statusbar" id="status">Sunset to 10 pm, midnight on weekends</div>
@@ -42,7 +42,7 @@
 
 <section class="player-dock" id="dock">
   <button class="backbar" id="collapse">Back to Fine Tuned Lights</button>
-  <button class="dockbar" id="dockopen">Tune in &middot; tap to listen</button>
+  <button class="dockbar" id="dockopen" aria-label="Tune in: tap to listen"><span class="knob"></span><span class="dial"><b>TUNE IN</b><small>tap to listen</small><span class="scale"></span><span class="needle"></span></span><span class="knob"></span></button>
   <button class="reopen" id="reopen" aria-label="Open player"></button>
   <iframe id="player" src="https://player.pulsemesh.io/d/MZVS" title="Listen to the show" allow="autoplay; geolocation; microphone"></iframe>
 </section>
@@ -81,7 +81,7 @@
   window.addEventListener('DOMContentLoaded', async function () {
     try {
       var show = await Roofline.loadShow('like-its-christmas');
-      var r = Roofline.makeRenderer(document.getElementById('roof'), show, { background: (window.__halloween ? 'house-night-halloween.jpg' : 'house-night.jpg') + '?v=45' });
+      var r = Roofline.makeRenderer(document.getElementById('roof'), show, { background: (window.__halloween ? 'house-night-halloween.jpg' : 'house-night.jpg') + '?v=46' });
       var t0 = performance.now();
       r.start(function () {
         return window.__pmPositionMs ? window.__pmPositionMs() : (performance.now() - t0) % r.durationMs;
